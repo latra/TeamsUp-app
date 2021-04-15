@@ -7,6 +7,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <!-- Strings used for Login -->
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="inic">Iniciar sesión</string>
@@ -15,5 +16,12 @@
     <string name="recordar_email">Recordar email</string>
     <string name="registrate">Regístrate</string>
     <string name="text_no_cuenta">¿No tienes cuenta?</string>
+
+    <!-- Strings used for Register -->
+    <string name="registrat">Registrarse</string>
+    <string name="Nombre">nombre</string>
+    <string name="bntRegis">Registrarse</string>
+    <string name="cancelar">Cancelar registro</string>
+    <string name="repetir_contraseña">Repetir contraseña</string>
 
 </resources>
