@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/inic"
+                android:textAlignment="center"
+                android:textColor="#78A0EB"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/intro_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="@string/e_mail"
+                android:inputType="textEmailAddress"
+                android:textColor="#7F0047" />
+
+            <EditText
+                android:id="@+id/intro_pswd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColor="#7F0047" />
+
+            <CheckBox
+                android:id="@+id/remember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/recordar_email" />
+
+            <Button
+                android:id="@+id/btnEntrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#78A0EB"
+                android:text="@string/inic"
+                android:textColor="#FDFCFC" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/text_no_cuenta"
+                android:textColor="#070707"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvRegis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="regis"
+                android:text="@string/registrate"
+                android:textColor="#0839C6"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
