@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FBF9FA"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -25,7 +26,7 @@
             android:layout_marginBottom="30dp"
             android:text="@string/inic"
             android:textAlignment="center"
-            android:textColor="#78A0EB"
+            android:textColor="#fd0054"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -65,7 +66,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#78A0EB"
+            android:background="#a80038"
             android:text="@string/inic"
             android:textColor="#FDFCFC" />
 
@@ -87,7 +88,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tvRegis"
+                android:id="@+id/regist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="regis"
@@ -105,10 +106,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.744"
-        app:srcCompat="@drawable/icon" />
+        app:layout_constraintVertical_bias="0.279"
+        app:srcCompat="@drawable/icon"
+        android:layout_marginTop="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

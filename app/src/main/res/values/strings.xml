@@ -25,5 +25,6 @@
     <string name="repetir_contraseña">Repetir contraseña</string>
     <string name="politica_privacitat_text">"He leído y acepto la "</string>
     <string name="politica_privacitat">Política de privacidad</string>
+    <string name="edad">Introducir edad</string>
 
 </resources>

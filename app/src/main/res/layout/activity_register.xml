@@ -13,8 +13,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.567">
 
         <TextView
             android:id="@+id/textView37"
@@ -24,7 +26,7 @@
             android:layout_marginBottom="30dp"
             android:text="@string/registrat"
             android:textAlignment="center"
-            android:textColor="#78A0EB"
+            android:textColor="#fd0054"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -46,6 +48,18 @@
             android:ems="10"
             android:hint="@string/e_mail"
             android:inputType="textEmailAddress"
+            android:textColor="#78A0EB" />
+
+        <EditText
+            android:id="@+id/input_edad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/edad"
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true"
             android:textColor="#78A0EB" />
 
         <EditText
@@ -83,16 +97,15 @@
 
             <TextView
                 android:id="@+id/tvRegis"
-                android:layout_marginTop="19dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
                 android:onClick="regis"
                 android:text="@string/politica_privacitat"
                 android:textColor="#0839C6"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
 
 
         <Button
@@ -103,7 +116,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#78A0EB"
+            android:background="#fd0054"
             android:text="@string/bntRegis"
             android:textColor="#FDFCFC" />
 
@@ -129,5 +142,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.744"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/icon"
+        android:layout_marginTop="50dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
