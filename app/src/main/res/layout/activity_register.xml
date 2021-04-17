@@ -100,7 +100,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
-                android:onClick="regis"
                 android:text="@string/politica_privacitat"
                 android:textColor="#0839C6"
                 android:textSize="16sp"

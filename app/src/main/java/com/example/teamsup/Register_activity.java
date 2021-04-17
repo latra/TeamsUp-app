@@ -5,6 +5,7 @@ import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +15,9 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        EditText input_date = findViewById(R.id.input_edad);
-        input_date.setOnClickListener(this);
+        Toast.makeText(Register_activity.this, "PRUEBA ", Toast.LENGTH_SHORT).show();
+        //EditText input_date = findViewById(R.id.input_edad);
+       // input_date.setOnClickListener(this);
 
     }
 
@@ -33,4 +34,5 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
         DatePickerFragment datePicker = new DatePickerFragment();
         datePicker.show(getSupportFragmentManager(), "datePicker");
     }
+
 }
