@@ -27,4 +27,8 @@
     <string name="politica_privacitat">Política de privacidad</string>
     <string name="edad">Introducir edad</string>
 
+    <!-- Strings used for User Profile -->
+    <string name="mis_eventos">Mis eventos</string>
+    <string name="crear_evento">Crear evento</string>
+
 </resources>
