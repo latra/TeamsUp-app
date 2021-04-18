@@ -11,28 +11,33 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Register_activity extends AppCompatActivity implements View.OnClickListener {
+
+    EditText input_date;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Toast.makeText(Register_activity.this, "PRUEBA ", Toast.LENGTH_SHORT).show();
-        //EditText input_date = findViewById(R.id.input_edad);
-       // input_date.setOnClickListener(this);
+        Toast.makeText(Register_activity.this, "Proceso registro iniciado ", Toast.LENGTH_SHORT).show();
+
+        input_date = findViewById(R.id.input_edad);
+        input_date.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.input_edad:
-              //  showDatePickerDialog();
-                break;
+        if (v.getId() == R.id.input_edad) {
+            showDatePickerDialog();
         }
     }
 
     private void showDatePickerDialog() {
-        DatePickerFragment datePicker = new DatePickerFragment();
+        DatePickerFragment datePicker = new DatePickerFragment(input_date);
         datePicker.show(getSupportFragmentManager(), "datePicker");
     }
 
+    public void cancel(View view) {
+        finish();
+    }
 }

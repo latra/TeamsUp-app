@@ -1,3 +1,5 @@
+
+
 package com.example.teamsup;
 
 import android.content.Intent;
@@ -16,7 +18,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registrate(View view) {
-        Toast.makeText(MainActivity.this, "Iniciando proceso de registro", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(MainActivity.this, Register_activity.class);
+        Toast.makeText(this, "Iniciando proceso de registro", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Register_activity.class);
         startActivity(intent);
     }
 }
