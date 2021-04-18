@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registrate(View view) {
-        Toast.makeText(this, "Iniciando proceso de registro", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Register_activity.class);
         startActivity(intent);
     }

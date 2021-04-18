@@ -18,7 +18,7 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Toast.makeText(Register_activity.this, "Proceso registro iniciado ", Toast.LENGTH_SHORT).show();
+
 
         input_date = findViewById(R.id.input_edad);
         input_date.setOnClickListener(this);
@@ -38,6 +38,7 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
     }
 
     public void cancel(View view) {
+        Toast.makeText(Register_activity.this, "Registro cancelado. ", Toast.LENGTH_SHORT).show();
         finish();
     }
 }
