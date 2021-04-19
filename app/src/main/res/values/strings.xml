@@ -30,5 +30,7 @@
     <!-- Strings used for User Profile -->
     <string name="mis_eventos">Mis eventos</string>
     <string name="crear_evento">Crear evento</string>
+    <string name="nombre_usuario">Nombre usuario</string>
+    <string name="direccion">Dirección</string>
 
 </resources>
