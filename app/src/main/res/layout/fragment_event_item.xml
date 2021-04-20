@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventItem">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+
+        android:background="#E8EBF2"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="392dp"
+            android:layout_height="166dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/image_sportico"
+                android:layout_width="126dp"
+                android:layout_height="118dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/sportico_other"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/event_type"
+                android:layout_width="223dp"
+                android:layout_height="44dp"
+                android:fontFamily="sans-serif-black"
+                android:text="SportType"
+                android:textColor="#3C887E"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@+id/image_sportico"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/event_title"
+                android:layout_width="206dp"
+                android:layout_height="121dp"
+                android:text="EventTitle"
+                android:textColor="#373F47"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/image_sportico"
+                app:layout_constraintTop_toBottomOf="@+id/event_type" />
+
+            <TextView
+                android:id="@+id/eventDistance"
+                android:layout_width="112dp"
+                android:layout_height="47dp"
+                android:text="XX Km"
+                android:textColor="#373F47"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="@+id/image_sportico"
+                app:layout_constraintTop_toBottomOf="@+id/image_sportico" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="45dp"
+                android:layout_height="42dp"
+                android:src="@drawable/starico_false"
+                app:layout_constraintStart_toEndOf="@+id/event_type"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="56dp"
+                android:layout_height="122dp"
+                android:alpha="0.2"
+                android:src="@drawable/nextico_right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/event_title"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</FrameLayout>
