@@ -17,12 +17,15 @@ public class EventItem extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String TITLE = "param1";
+    private static final String DESCRIPTION = "param2";
+    private static final String TYPE = "param3";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String mParam3;
 
     public EventItem() {
         // Required empty public constructor
@@ -37,11 +40,12 @@ public class EventItem extends Fragment {
      * @return A new instance of fragment EventItem.
      */
     // TODO: Rename and change types and number of parameters
-    public static EventItem newInstance(String param1, String param2) {
+    public static EventItem newInstance(String param1, String param2, String type) {
         EventItem fragment = new EventItem();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(TITLE, param1);
+        args.putString(DESCRIPTION, param2);
+        args.putString(TYPE, type);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,8 +54,9 @@ public class EventItem extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getString(TITLE);
+            mParam2 = getArguments().getString(DESCRIPTION);
+            mParam3 = getArguments().getString(TYPE);
         }
     }
 
