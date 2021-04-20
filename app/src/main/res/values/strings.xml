@@ -32,5 +32,6 @@
     <string name="crear_evento">Crear evento</string>
     <string name="nombre_usuario">Nombre usuario</string>
     <string name="direccion">Dirección</string>
+    <string name="preferencias">Preferencias</string>
 
 </resources>
