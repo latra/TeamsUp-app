@@ -33,14 +33,13 @@
     <string name="nombre_usuario">Nombre usuario</string>
     <string name="direccion">Dirección</string>
     <string name="preferencias">Preferencias</string>
-    <string name="participantes">Número de participantes</string>
-    <string name="cancelar_creacion_evento">Cancelar</string>
-    <string name="btn_crear_evento">Crear</string>
-    <string name="tematica">Introducir temática</string>
-    <string name="fecha_evento">Fecha del evento</string>
-    <string name="hora">Hora</string>
+
 
     <!-- Strings used for Create Event -->
-
-
+    <string name="fecha_evento">Fecha del evento</string>
+    <string name="hora">Hora</string>
+    <string name="tematica">Introducir temática</string>
+    <string name="cancelar_creacion_evento">Cancelar</string>
+    <string name="btn_crear_evento">Crear</string>
+    <string name="participantes">Número de participantes</string>
 </resources>

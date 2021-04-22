@@ -20,25 +20,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-    Button btnEntrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivty_login_app);
-        btnEntrar = findViewById(R.id.btnEntrar);
-
-        btnEntrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, UserInfo.class);
-                startActivity(i);
-            }
-        });
 
     }
 
     public void registrate(View view) {
         Intent intent = new Intent(this, Register_activity.class);
+        startActivity(intent);
+    }
+    public void login(View view) {
+        Intent intent = new Intent(this, UserInfo.class);
         startActivity(intent);
     }
 }

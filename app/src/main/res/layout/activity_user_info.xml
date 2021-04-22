@@ -77,7 +77,8 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="15sp"
             android:backgroundTint="#3C887E"
-            android:text="@string/crear_evento" />
+            android:text="@string/crear_evento"
+            android:onClick="createEvent"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
