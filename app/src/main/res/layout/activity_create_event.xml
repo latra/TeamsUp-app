@@ -4,6 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateEvent">
+    android:background="#E8EBF2">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/crear_evento"
+            android:textAlignment="center"
+            android:textColor="#3C887E"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <EditText
+                android:id="@+id/input_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="@string/Nombre"
+                android:inputType="textEmailAddress"
+                android:textColor="#78A0EB" />
+
+            <EditText
+                android:id="@+id/input_mail2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="@string/direccion"
+                android:inputType="textEmailAddress"
+                android:textColor="#78A0EB" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/input_fecha"
+                    android:layout_width="150sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/fecha_evento"
+                    android:inputType="date"
+                    android:textColor="#78A0EB" />
+                <EditText
+                    android:id="@+id/input_hora"
+                    android:layout_width="50sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10sp"
+                    android:inputType="time"
+                    android:hint="@string/hora"
+                    android:textColor="#78A0EB" />
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/num_particpantes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="@string/participantes"
+                android:inputType="number"
+                android:textColor="#78A0EB" />
+
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="210sp"
+                android:layout_height="35sp"
+                android:layout_gravity="center"
+                android:textColor="#FDFCFC"
+                />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#3C887E"
+            android:text="@string/btn_crear_evento"
+            android:textColor="#FDFCFC" />
+
+        <TextView
+            android:id="@+id/tvCancelar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="cancel"
+            android:text="@string/cancelar_creacion_evento"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

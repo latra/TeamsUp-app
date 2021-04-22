@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:onClick="cancel"
-            android:text="@string/cancelar"
+            android:text="@string/cancelar_registro"
             android:textSize="16sp" />
 
 
