@@ -42,4 +42,7 @@
     <string name="cancelar_creacion_evento">Cancelar</string>
     <string name="btn_crear_evento">Crear</string>
     <string name="participantes">Número de participantes</string>
+
+    <!-- Strings used for Editar PErfil -->
+    <string name="btn_guardar_profile">Guardar</string>
 </resources>
