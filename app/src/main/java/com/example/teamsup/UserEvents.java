@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class UserEvents extends Fragment {
 
     private TextView mTextView;
-    private EventListAdapter nearadapter;
+    private EventListAdapter adapterEvents;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -24,12 +24,12 @@ public class UserEvents extends Fragment {
         ListView myEvents = getView().findViewById(
                 R.id.myEvents);
 
-        ArrayList<EventItem> nearEvents = new ArrayList<>();
-        nearEvents.add(new EventItem());
-        nearEvents.add(new EventItem());
-        nearEvents.add(new EventItem());
-        nearadapter = new EventListAdapter(getView().getContext(), nearEvents);
-        myEvents.setAdapter(nearadapter);
+        ArrayList<EventItem> events = new ArrayList<>();
+        events.add(new EventItem());
+        events.add(new EventItem());
+        events.add(new EventItem());
+        adapterEvents = new EventListAdapter(getView().getContext(), events);
+        myEvents.setAdapter(adapterEvents);
 
     }
     @Override
