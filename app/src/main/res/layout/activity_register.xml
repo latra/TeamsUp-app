@@ -128,7 +128,7 @@
             android:backgroundTint="#3C887E"
             android:text="@string/bntRegis"
             android:textColor="#FDFCFC"
-            android:onClick="returnLogin"/>
+            />
 
         <TextView
             android:id="@+id/tvCancelar"

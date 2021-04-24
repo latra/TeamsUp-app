@@ -4,36 +4,80 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class Register_activity extends AppCompatActivity implements View.OnClickListener {
 
+    private FirebaseAuth mAuth;
+
     EditText input_date;
     TextView politica_privacidad;
+    EditText nom;
     EditText mail;
+    EditText paswd;
     CheckBox checkBox;
+
+    Button registerBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        mAuth = FirebaseAuth.getInstance();
 
         input_date = findViewById(R.id.input_edad);
         checkBox = findViewById(R.id.policy_checkbox);
-
+        registerBtn = findViewById(R.id.btnRegistrar);
+        nom = findViewById(R.id.input_name);
+        mail = findViewById(R.id.input_mail2);
+        paswd = findViewById(R.id.input_pswd2);
         input_date.setOnClickListener(this);
 
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.createUserWithEmailAndPassword(mail.getText().toString().trim(), paswd.getText().toString().trim())
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(nom.getText().toString()).build();
+
+                                    user.updateProfile(profileUpdates);
+
+                                    Toast.makeText(getApplication(), "Usuari creat correctament!", Toast.LENGTH_SHORT).show();
+                                    finish();
+
+                                } else {
+                                    // If sign in fails, display a message to the user.Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplication(), "Email ja registat!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
     }
 
     @Override
@@ -60,7 +104,7 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
 
     }
 
-    public void returnLogin(View view) {
+    public void returnLogin() {
         if(checkBox.isChecked()){
             Intent i = new Intent(Register_activity.this, LoginActivity.class);
             startActivity(i);
