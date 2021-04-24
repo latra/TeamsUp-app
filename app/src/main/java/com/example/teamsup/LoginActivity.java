@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         remember = findViewById(R.id.remember);
 
 
-        // if (mAuth.getCurrentUser() != null) login();
+        if (mAuth.getCurrentUser() != null) login();
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +60,6 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-
                                     login();
                                 } else {
                                     Toast.makeText(getApplication(), "Email y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();
@@ -88,15 +87,13 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void login(View view) {
+    public void login() {
         Intent intent = new Intent(this, TemplateActivity.class);
         startActivity(intent);
 
     }
 
-    public void login() {
-        Intent intent = new Intent(this, UserInfo.class);
-    }
+
 
 
 }
