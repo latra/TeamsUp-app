@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 /**
@@ -44,6 +46,10 @@ public class Home extends Fragment {
         nearEventsListView.setAdapter(nearadapter);
         recommendadapter = new EventListAdapter(getView().getContext(), nearEvents);
         recommendedEventsListView.setAdapter(recommendadapter);
+
+
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.newEventButton);
+        floatingActionButton.setOnClickListener((vw) -> ((TemplateActivity)getActivity()).updateFragment(new CreateEvent()));
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

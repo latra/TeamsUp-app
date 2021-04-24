@@ -54,4 +54,11 @@
     <!-- Strings used for Editar PErfil -->
     <string name="btn_guardar_profile">Guardar</string>
 
+    <!-- Sports -->
+    <string name="tenis">Tenis</string>
+    <string name="football">Futbol</string>
+    <string name="basket">Baloncesto</string>
+    <string name="padel">Padel</string>
+    <string name="hockey">Hockey</string>
+    <string name="badminton">Badminton</string>
 </resources>
