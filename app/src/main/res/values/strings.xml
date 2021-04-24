@@ -33,7 +33,12 @@
     <string name="crear_evento">Crear evento</string>
     <string name="nombre_usuario">Nombre usuario</string>
     <string name="direccion">Dirección</string>
+
     <string name="preferencias">Preferencias</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 
     <!-- Strings used for Create Event -->
