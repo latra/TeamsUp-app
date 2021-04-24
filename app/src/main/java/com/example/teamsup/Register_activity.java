@@ -30,9 +30,9 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
 
     EditText input_date;
     TextView politica_privacidad;
-    EditText nom;
-    EditText mail;
-    EditText paswd;
+    EditText nombre_input;
+    EditText mail_input;
+    EditText paswd_input;
     CheckBox checkBox;
 
     Button registerBtn;
@@ -47,25 +47,26 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
         input_date = findViewById(R.id.input_edad);
         checkBox = findViewById(R.id.policy_checkbox);
         registerBtn = findViewById(R.id.btnRegistrar);
-        nom = findViewById(R.id.input_name);
-        mail = findViewById(R.id.input_mail2);
-        paswd = findViewById(R.id.input_pswd2);
+        nombre_input = findViewById(R.id.input_name);
+        mail_input = findViewById(R.id.input_mail2);
+        paswd_input = findViewById(R.id.input_pswd2);
         input_date.setOnClickListener(this);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.createUserWithEmailAndPassword(mail.getText().toString().trim(), paswd.getText().toString().trim())
+                String mail = mail_input.getText().toString();
+                String password = paswd_input.getText().toString();
+                String nombre = nombre_input.getText().toString();
+
+                mAuth.createUserWithEmailAndPassword(mail, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName(nom.getText().toString()).build();
 
-                                    user.updateProfile(profileUpdates);
 
                                     Toast.makeText(getApplication(), "Usuari creat correctament!", Toast.LENGTH_SHORT).show();
                                     finish();

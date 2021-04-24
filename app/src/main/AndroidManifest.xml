@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.teamsup">
+    package="com.example.teamsup" >
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
 
     <application
         android:allowBackup="true"
@@ -8,20 +12,26 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TeamsUp">
-        <activity android:name=".TemplateActivity">
+        android:theme="@style/Theme.TeamsUp" >
 
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+
+
+        <activity android:name=".TemplateActivity" >
         </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.TeamsUp.NoActionBar">
+            android:theme="@style/Theme.TeamsUp.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Register_activity"
             android:theme="@style/Theme.TeamsUp.NoActionBar" />
@@ -31,7 +41,8 @@
         <activity
             android:name=".EditProfile"
             android:theme="@style/Theme.TeamsUp.NoActionBar" />
-    </application>
 
+
+    </application>
 
 </manifest>

@@ -53,5 +53,7 @@
 
     <!-- Strings used for Editar PErfil -->
     <string name="btn_guardar_profile">Guardar</string>
+    <string name="title_activity_user_events">UserEvents</string>
+    <string name="EventosUsuario">Tus eventos</string>
 
 </resources>
