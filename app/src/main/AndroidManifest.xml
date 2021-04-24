@@ -9,18 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamsUp">
+<<<<<<< HEAD
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".UserInfo"
             android:theme="@style/Theme.TeamsUp.NoActionBar"/>
+=======
+        <activity android:name=".TemplateActivity">            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+        <activity android:name=".UserInfo" />
+>>>>>>> e172a113bb63b052af958cc75a8fb3c15d098754
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.TeamsUp.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Register_activity"

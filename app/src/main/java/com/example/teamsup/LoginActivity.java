@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+<<<<<<< HEAD
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -16,12 +17,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+=======
+>>>>>>> e172a113bb63b052af958cc75a8fb3c15d098754
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.View;
 
+<<<<<<< HEAD
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -31,6 +34,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+=======
+>>>>>>> e172a113bb63b052af958cc75a8fb3c15d098754
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -97,8 +102,13 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+<<<<<<< HEAD
     public void login() {
         Intent intent = new Intent(this, UserInfo.class);
+=======
+    public void login(View view) {
+        Intent intent = new Intent(this, TemplateActivity.class);
+>>>>>>> e172a113bb63b052af958cc75a8fb3c15d098754
         startActivity(intent);
     }
 

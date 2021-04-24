@@ -16,8 +16,8 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class NearEventItemAdapter extends ArrayAdapter<EventItem> {
-         NearEventItemAdapter(@NonNull Context context, ArrayList<EventItem> eventItemArrayAdapter) {
+public class EventListAdapter extends ArrayAdapter<EventItem> {
+         EventListAdapter(@NonNull Context context, ArrayList<EventItem> eventItemArrayAdapter) {
         super(context, 0, eventItemArrayAdapter);
     }
 

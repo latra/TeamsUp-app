@@ -39,6 +39,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+<<<<<<< HEAD
 
 
     <!-- Strings used for Create Event -->
@@ -51,4 +52,10 @@
 
     <!-- Strings used for Editar PErfil -->
     <string name="btn_guardar_profile">Guardar</string>
+=======
+    <!--strings used for home -->
+    <string name="recommendedEvents">Eventos recomendados para ti</string>
+    <string name="somethingNewEvents">Prueba algo nuevo…</string>
+
+>>>>>>> e172a113bb63b052af958cc75a8fb3c15d098754
 </resources>

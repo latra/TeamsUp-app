@@ -85,6 +85,7 @@
         android:layout_height="445dp"
         android:orientation="vertical">
 
+<<<<<<< HEAD:app/src/main/res/layout/activity_user_info.xml
         <TextView
             android:id="@+id/direccionUser"
             android:layout_width="wrap_content"
@@ -113,6 +114,33 @@
             android:textSize="24sp"
             android:textColor="#373F47"/>
 
+=======
+            <ImageView
+                android:id="@+id/HomeIco"
+                android:layout_width="157dp"
+                android:layout_height="161dp"
+                app:srcCompat="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="60sp"
+                android:layout_weight="1"
+                android:text="@string/nombre_usuario"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:id="@+id/notificationIco"
+                android:layout_width="19dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon_edit" />
+        </LinearLayout>
+>>>>>>> e172a113bb63b052af958cc75a8fb3c15d098754:app/src/main/res/layout/fragment_user_info.xml
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
