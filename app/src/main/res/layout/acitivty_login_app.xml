@@ -72,7 +72,7 @@
             android:backgroundTint="#3C887E"
             android:onClick="login"
             android:text="@string/inic"
-            android:textColor="#FDFCFC" />
+            android:textColor="#FDFCFC"/>
 
         <LinearLayout
             android:layout_width="match_parent"

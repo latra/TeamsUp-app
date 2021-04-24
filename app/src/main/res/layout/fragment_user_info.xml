@@ -4,100 +4,172 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserInfo"
     android:background="#E8EBF2">
+
+<LinearLayout
+    android:id="@+id/linearLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.204">
 
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:background="#3C887E">
+
+        <ImageView
+            android:id="@+id/photo_profile"
+            android:layout_width="157dp"
+            android:layout_height="161dp"
+            app:srcCompat="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/nombreUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="60sp"
+            android:layout_weight="1"
+            android:text="@string/nombre_usuario"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/edit_button"
+            android:layout_width="19dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/icon_edit" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:layout_marginEnd="15sp"
+            android:backgroundTint="#3C887E"
+            android:text="@string/mis_eventos" />
+
+        <Button
+            android:id="@+id/crear_evento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15sp"
+            android:backgroundTint="#3C887E"
+            android:text="@string/crear_evento"
+            android:onClick="createEvent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="445dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/direccionUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:text="@string/direccion"
+            android:textSize="24sp"
+            android:textColor="#373F47"/>
+        <TextView
+            android:id="@+id/mailUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:text="@string/e_mail"
+            android:textSize="24sp"
+            android:textColor="#373F47"/>
+        <TextView
+            android:id="@+id/preferenciasUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:text="@string/preferencias"
+            android:textSize="24sp"
+            android:textColor="#373F47"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#3C887E">
-
+            android:layout_gravity="center">
             <ImageView
-                android:id="@+id/HomeIco"
-                android:layout_width="157dp"
-                android:layout_height="161dp"
-                app:srcCompat="@drawable/profile" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="60sp"
-                android:layout_weight="1"
-                android:text="@string/nombre_usuario"
-                android:textColor="@color/black"
-                android:textSize="25sp" />
-
+                android:id="@+id/ImagePref1"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
             <ImageView
-                android:id="@+id/notificationIco"
-                android:layout_width="19dp"
-                android:layout_height="42dp"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/icon_edit" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+                android:id="@+id/ImagePref2"
+                android:layout_width="30sp"
+                android:layout_height="30sp" />
+            <ImageView
+                android:id="@+id/ImagePref3"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref4"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref5"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref6"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref7"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref8"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref9"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref10"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref11"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15sp"
-                android:layout_marginEnd="15sp"
-                android:backgroundTint="#3C887E"
-                android:text="@string/mis_eventos" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15sp"
-                android:backgroundTint="#3C887E"
-                android:text="@string/crear_evento" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="445dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30sp"
-                android:text="@string/direccion"
-                android:textSize="24sp" />
-        </LinearLayout>
+
+
 
     </LinearLayout>
 
-
+</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
