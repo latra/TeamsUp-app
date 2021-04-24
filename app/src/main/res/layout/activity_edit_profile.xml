@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:checked="true"/>
+                    android:checked="false"/>
                 <ImageView
                     android:id="@+id/image_rugby"
                     android:layout_width="40dp"
@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:checked="true"/>
+                    android:checked="false"/>
                 <ImageView
                     android:id="@+id/image_bowling"
                     android:layout_width="40dp"
@@ -205,7 +205,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:checked="true"/>
+                    android:checked="false"/>
                 <ImageView
                     android:id="@+id/image_pingpong"
                     android:layout_width="40dp"

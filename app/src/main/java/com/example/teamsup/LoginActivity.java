@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, UserInfo.class);
         startActivity(intent);
     }
 

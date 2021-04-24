@@ -112,6 +112,62 @@
             android:text="@string/preferencias"
             android:textSize="24sp"
             android:textColor="#373F47"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/ImagePref1"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref2"
+                android:layout_width="30sp"
+                android:layout_height="30sp" />
+            <ImageView
+                android:id="@+id/ImagePref3"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref4"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref5"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref6"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref7"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref8"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref9"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref10"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+            <ImageView
+                android:id="@+id/ImagePref11"
+                android:layout_width="30sp"
+                android:layout_height="30sp"/>
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 
 </LinearLayout>

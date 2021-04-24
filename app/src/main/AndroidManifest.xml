@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamsUp">
         <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".UserInfo" />
+        <activity android:name=".UserInfo"
+            android:theme="@style/Theme.TeamsUp.NoActionBar"/>
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
