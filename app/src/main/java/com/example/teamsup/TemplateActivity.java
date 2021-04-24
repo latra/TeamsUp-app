@@ -28,7 +28,7 @@ public class TemplateActivity extends AppCompatActivity {
         homeIcon.setOnClickListener((view) -> updateFragment(new Home()));
     }
 
-    private  void updateFragment(Fragment fragment){
+    public  void updateFragment(Fragment fragment){
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_place, fragment);
         ft.commit();

@@ -66,10 +66,7 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName(nombre).build();
 
-                                    user.updateProfile(profileUpdates);
 
                                     Toast.makeText(getApplication(), "Usuari creat correctament!", Toast.LENGTH_SHORT).show();
                                     finish();

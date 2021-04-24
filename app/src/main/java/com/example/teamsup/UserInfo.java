@@ -32,6 +32,8 @@ public class UserInfo extends Fragment {
 
     SharedPreferences sharedpreferences;
 
+    Button misEventos;
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
@@ -41,6 +43,8 @@ public class UserInfo extends Fragment {
         direccion = view.findViewById(R.id.direccionUser);
         usuario = view.findViewById(R.id.nombreUsuario);
         mail = view.findViewById(R.id.mailUser);
+        misEventos = view.findViewById(R.id.button);
+
 
         editbutton.setOnClickListener((v) -> {
                 Intent i = new Intent(getActivity(), EditProfile.class);
@@ -51,6 +55,8 @@ public class UserInfo extends Fragment {
         });
         Button createEvent = view.findViewById(R.id.crear_evento);
         createEvent.setOnClickListener((v) -> createEvent());
+
+        misEventos.setOnClickListener((v) -> ((TemplateActivity) getActivity()).updateFragment(new UserEvents()));
     }
 
 
