@@ -25,6 +25,13 @@
     <string name="repetir_contraseña">Repetir contraseña</string>
     <string name="politica_privacitat_text">"He leído y acepto la "</string>
     <string name="politica_privacitat">Política de privacidad</string>
+    <string name="edad">Introducir edad</string>
+
+    <!-- Strings used for User Profile -->
+    <string name="mis_eventos">Mis eventos</string>
+    <string name="crear_evento">Crear evento</string>
+    <string name="nombre_usuario">Nombre usuario</string>
+    <string name="direccion">Dirección</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

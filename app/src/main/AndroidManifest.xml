@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamsUp">
+        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".UserInfo" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.TeamsUp.NoActionBar">
             <intent-filter>
@@ -19,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Register_activity"
+            android:theme="@style/Theme.TeamsUp.NoActionBar" />
     </application>
 
 </manifest>
