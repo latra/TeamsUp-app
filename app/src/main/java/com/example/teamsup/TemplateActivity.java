@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 public class TemplateActivity extends AppCompatActivity {
 
@@ -19,6 +21,11 @@ public class TemplateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_template);
         updateFragment(new Home());
+
+        ImageView userIcon = findViewById(R.id.UserIco);
+        ImageView homeIcon = findViewById(R.id.HomeIco);
+        userIcon.setOnClickListener((view) -> updateFragment(new UserInfo()));
+        homeIcon.setOnClickListener((view) -> updateFragment(new Home()));
     }
 
     private  void updateFragment(Fragment fragment){

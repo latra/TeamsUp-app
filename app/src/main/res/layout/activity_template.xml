@@ -17,41 +17,42 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="69dp"
-            android:background="#EF8275">
+            android:background="#3C887E">
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="148dp"
-                android:layout_height="68dp"
+                android:id="@+id/HomeIco"
+                android:layout_width="172dp"
+                android:layout_height="77dp"
                 android:layout_weight="1"
+                android:background="#A3373F47"
                 android:src="@drawable/app_logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/calendaryIco"
                 android:layout_width="57dp"
                 android:layout_height="60dp"
                 android:src="@android:drawable/ic_menu_today"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/notificationIco"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.444" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/notificationIco"
                 android:layout_width="49dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:alpha="0.4"
                 android:src="@drawable/bell"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView7"
+                app:layout_constraintEnd_toStartOf="@+id/UserIco"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/UserIco"
                 android:layout_width="59dp"
                 android:layout_height="42dp"
                 android:alpha="0.35"
