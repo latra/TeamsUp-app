@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CreateEvent extends AppCompatActivity implements View.OnClickListener{
@@ -26,7 +24,7 @@ public class CreateEvent extends AppCompatActivity implements View.OnClickListen
         spinner = findViewById(R.id.spinner);
         ArrayList<String> tematicas = setTematicas();
 
-        ArrayAdapter adp = new ArrayAdapter(CreateEvent.this, android.R.layout.simple_spinner_dropdown_item, tematicas);
+        ArrayAdapter<String> adp = new ArrayAdapter<>(CreateEvent.this, android.R.layout.simple_spinner_dropdown_item, tematicas);
         input_date = findViewById(R.id.input_fecha);
         input_hour = findViewById(R.id.input_hora);
 

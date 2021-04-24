@@ -84,7 +84,6 @@
         android:layout_width="match_parent"
         android:layout_height="445dp"
         android:orientation="vertical">
-
         <TextView
             android:id="@+id/direccionUser"
             android:layout_width="wrap_content"
@@ -164,9 +163,6 @@
                 android:layout_height="30sp"/>
 
         </LinearLayout>
-
-
-
 
     </LinearLayout>
 

@@ -8,24 +8,17 @@ import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -54,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         remember = findViewById(R.id.remember);
 
 
-       // if (mAuth.getCurrentUser() != null) login();
+        // if (mAuth.getCurrentUser() != null) login();
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                //    SharedPreferences.Editor editor = sharedpreferences.edit();
-                                //    editor.putString("Email", email);
 
-                                //    editor.commit();
                                     login();
                                 } else {
                                     Toast.makeText(getApplication(), "Email y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();
@@ -88,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
 
         }
     }
@@ -101,7 +91,13 @@ public class LoginActivity extends AppCompatActivity {
     public void login(View view) {
         Intent intent = new Intent(this, TemplateActivity.class);
         startActivity(intent);
+
     }
+
+    public void login() {
+        Intent intent = new Intent(this, UserInfo.class);
+    }
+
 
 }
 
