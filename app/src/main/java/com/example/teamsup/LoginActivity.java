@@ -69,10 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                //    SharedPreferences.Editor editor = sharedpreferences.edit();
-                                //    editor.putString("Email", email);
 
-                                //    editor.commit();
                                     login();
                                 } else {
                                     Toast.makeText(getApplication(), "Email y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();
