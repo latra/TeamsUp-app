@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,8 +48,9 @@ public class UserInfo extends Fragment {
                 i.putExtra("direccion", (String) direccion.getText());
                 i.putExtra("mail", (String) mail.getText());
                 startActivityForResult(i, 2);
-
         });
+        Button createEvent = view.findViewById(R.id.crear_evento);
+        createEvent.setOnClickListener((v) -> createEvent());
     }
 
 
@@ -111,7 +113,7 @@ public class UserInfo extends Fragment {
 
     }
 
-    public void createEvent(View view) {
+    public void createEvent() {
         Intent intent = new Intent(getContext(), CreateEvent.class);
         startActivity(intent);
     }
