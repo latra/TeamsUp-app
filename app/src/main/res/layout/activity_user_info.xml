@@ -32,7 +32,7 @@
             app:srcCompat="@drawable/profile" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/nombreUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
@@ -86,7 +86,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/direccionUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -95,7 +95,16 @@
             android:textSize="24sp"
             android:textColor="#373F47"/>
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/mailUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:text="@string/e_mail"
+            android:textSize="24sp"
+            android:textColor="#373F47"/>
+        <TextView
+            android:id="@+id/preferenciasUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

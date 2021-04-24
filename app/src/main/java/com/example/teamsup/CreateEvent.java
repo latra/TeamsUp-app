@@ -60,5 +60,6 @@ public class CreateEvent extends AppCompatActivity implements View.OnClickListen
     private void showDatePickerDialog() {
         DatePickerFragment datePicker = new DatePickerFragment(input_date);
         datePicker.show(getSupportFragmentManager(), "datePicker");
+
     }
 }

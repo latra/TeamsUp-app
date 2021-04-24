@@ -46,7 +46,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="445dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <EditText
@@ -55,11 +55,189 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:layout_marginTop="70sp"
                 android:textColor="@color/black"
                 android:textSize="24sp"/>
+            <EditText
+                android:id="@+id/edit_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="10sp"
+                android:textColor="@color/black"
+                android:textSize="24sp"/>
 
+            <TextView
+                android:id="@+id/preferenciasUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30sp"
+                android:text="@string/preferencias"
+                android:textSize="24sp"
+                android:textColor="#373F47"/>
+            <LinearLayout
+                android:id="@+id/layout_preferences1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_rugby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="true"/>
+                <ImageView
+                    android:id="@+id/image_rugby"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_american_football"/>
+                <CheckBox
+                    android:id="@+id/checkbox_badminton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"/>
+                <ImageView
+                    android:id="@+id/image_badminton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_badminton" />
+                <CheckBox
+                    android:id="@+id/checkbox_baseball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"/>
+                <ImageView
+                    android:id="@+id/image_baseball"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_baseball" />
+                <CheckBox
+                    android:id="@+id/checkbox_basketball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"/>
+                <ImageView
+                    android:id="@+id/image_basketball"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_basketball" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_preferences2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_bowling"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="true"/>
+                <ImageView
+                    android:id="@+id/image_bowling"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_bowling"/>
+                <CheckBox
+                    android:id="@+id/checkbox_boxing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"/>
+                <ImageView
+                    android:id="@+id/image_boxing"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_boxing" />
+                <CheckBox
+                    android:id="@+id/checkbox_football"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"/>
+                <ImageView
+                    android:id="@+id/image_football"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_football" />
+                <CheckBox
+                    android:id="@+id/checkbox_hockey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"/>
+                <ImageView
+                    android:id="@+id/image_hockey"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_hockey" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_preferences3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_pingpong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="true"/>
+                <ImageView
+                    android:id="@+id/image_pingpong"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_ping_pong"/>
+                <CheckBox
+                    android:id="@+id/checkbox_volleyball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"/>
+                <ImageView
+                    android:id="@+id/image_volleyball"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_volleyball" />
+                <CheckBox
+                    android:id="@+id/checkbox_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"/>
+                <ImageView
+                    android:id="@+id/image_other"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sportico_other" />
+
+            </LinearLayout>
             <Button
                 android:id="@+id/btnGuardar"
                 android:layout_width="match_parent"

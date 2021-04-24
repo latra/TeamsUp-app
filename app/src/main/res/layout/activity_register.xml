@@ -61,6 +61,15 @@
             android:hint="@string/edad"
             android:inputType="date"
             android:textColor="#78A0EB" />
+        <EditText
+            android:id="@+id/input_direccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/direccion"
+            android:inputType="textEmailAddress"
+            android:textColor="#78A0EB" />
 
         <EditText
             android:id="@+id/input_pswd2"
@@ -88,7 +97,7 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/remember"
+                android:id="@+id/policy_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -96,14 +105,15 @@
                 android:text="@string/politica_privacitat_text" />
 
             <TextView
-                android:id="@+id/tvRegis"
+                android:id="@+id/pol_privacidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
                 android:text="@string/politica_privacitat"
                 android:textColor="#0839C6"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="showPolicity"/>
         </LinearLayout>
 
 
@@ -117,7 +127,8 @@
             android:layout_marginBottom="10dp"
             android:backgroundTint="#3C887E"
             android:text="@string/bntRegis"
-            android:textColor="#FDFCFC" />
+            android:textColor="#FDFCFC"
+            android:onClick="returnLogin"/>
 
         <TextView
             android:id="@+id/tvCancelar"
@@ -133,13 +144,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="161dp"
-        android:layout_height="149dp"
+        android:layout_width="139dp"
+        android:layout_height="124dp"
         android:layout_marginTop="50dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.708"
         app:srcCompat="@drawable/icon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

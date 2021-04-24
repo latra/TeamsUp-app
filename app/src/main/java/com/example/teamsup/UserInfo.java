@@ -13,16 +13,19 @@ import android.widget.TextView;
 public class UserInfo extends AppCompatActivity {
 
     ImageView editbutton;
-    TextView direccion;
     TextView usuario;
+    TextView direccion;
+    TextView mail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
 
         editbutton = findViewById(R.id.edit_button);
-        direccion = findViewById(R.id.textView5);
-        usuario = findViewById(R.id.textView3);
+        direccion = findViewById(R.id.direccionUser);
+        usuario = findViewById(R.id.nombreUsuario);
+        mail = findViewById(R.id.mailUser);
 
         editbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +34,7 @@ public class UserInfo extends AppCompatActivity {
                 Intent i = new Intent(UserInfo.this, EditProfile.class);
                 b.putString("direccion", (String) direccion.getText());
                 b.putString("nombreUsuario", (String) usuario.getText());
+                b.putString("mail", (String) mail.getText());
                 i.putExtras(b);
                 startActivity(i);
             }

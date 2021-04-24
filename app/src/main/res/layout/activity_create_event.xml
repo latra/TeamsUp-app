@@ -47,13 +47,13 @@
                 android:textColor="#78A0EB" />
 
             <EditText
-                android:id="@+id/input_mail2"
+                android:id="@+id/input_direccion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
                 android:hint="@string/direccion"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:textColor="#78A0EB" />
 
             <LinearLayout
@@ -95,10 +95,16 @@
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="210sp"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_gravity="center"
                 android:textColor="#FDFCFC"
                 />
+            <ImageView
+                android:id="@+id/imagen_tematica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxHeight="20sp"
+                android:maxWidth="20sp"/>
         </LinearLayout>
 
 
