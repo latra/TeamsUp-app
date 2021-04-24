@@ -7,7 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:887840740803:android:6376f69233d08c7d135976",
+        "mobilesdk_app_id": "1:887840740803:android:e8550d1550094171135976",
         "android_client_info": {
           "package_name": "com.example.teamsup"
         }
@@ -20,36 +20,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAFU8Zeb5rznuZDJFJR90gRj2ny29Nejp8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "887840740803-1ekrni7nrpd3aed6eur9dh9ah9th1lku.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:887840740803:android:57b0ac448036c323135976",
-        "android_client_info": {
-          "package_name": "com.teamsup"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "887840740803-1ekrni7nrpd3aed6eur9dh9ah9th1lku.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAFU8Zeb5rznuZDJFJR90gRj2ny29Nejp8"
+          "current_key": "AIzaSyBOL7P6m8_bhpxD7XyNz3_nfJkXPsbXKis"
         }
       ],
       "services": {
