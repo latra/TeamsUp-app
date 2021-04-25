@@ -47,4 +47,7 @@ dependencies {
     // Java language implementation
     def activity_version = "1.2.2"
     implementation "androidx.activity:activity:$activity_version"
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+
 }
