@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.teamsup.R;
 import com.example.teamsup.activities.EditProfileActivity;
 import com.example.teamsup.activities.LoginActivity;
+import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.utils.ConstantsUtils;
 import com.google.firebase.auth.FirebaseAuth;
 
