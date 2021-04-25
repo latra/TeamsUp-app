@@ -15,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.teamsup.R;
+import com.example.teamsup.activities.LoginActivity;
 import com.example.teamsup.activities.TemplateActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Collections;
 import java.util.Set;
@@ -32,7 +34,7 @@ public class UserInfo extends Fragment {
     TextView usuario;
     TextView direccion;
     TextView mail;
-
+    Button logoutButton;
     SharedPreferences sharedpreferences;
 
     Button misEventos;
@@ -47,7 +49,12 @@ public class UserInfo extends Fragment {
         usuario = view.findViewById(R.id.nombreUsuario);
         mail = view.findViewById(R.id.mailUser);
         misEventos = view.findViewById(R.id.button);
-
+        logoutButton = view.findViewById(R.id.logout_button);
+        logoutButton.setOnClickListener((v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent i = new Intent(getActivity(), LoginActivity.class);
+            startActivity(i);
+        }));
 
         editbutton.setOnClickListener((v) -> {
                 Intent i = new Intent(getActivity(), EditProfile.class);
