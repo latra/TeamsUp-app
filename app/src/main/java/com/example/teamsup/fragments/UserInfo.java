@@ -15,9 +15,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.teamsup.R;
+import com.example.teamsup.activities.EditProfileActivity;
 import com.example.teamsup.activities.LoginActivity;
 import com.example.teamsup.activities.TemplateActivity;
+import com.example.teamsup.models.UserModel;
+import com.example.teamsup.utils.FirebaseUtils;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.Collections;
 import java.util.Set;
@@ -55,9 +61,20 @@ public class UserInfo extends Fragment {
             Intent i = new Intent(getActivity(), LoginActivity.class);
             startActivity(i);
         }));
-
+        String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseUtils.getUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                UserModel userModel = documentSnapshot.toObject(UserModel.class);
+                if (userModel != null) {
+                    direccion.setText(userModel.direction);
+                    usuario.setText(userModel.username);
+                    mail.setText(userModel.email);
+                }
+            }
+        });
         editbutton.setOnClickListener((v) -> {
-                Intent i = new Intent(getActivity(), EditProfile.class);
+                Intent i = new Intent(getActivity(), EditProfileActivity.class);
                 i.putExtra("usuario", (String) usuario.getText());
                 i.putExtra("direccion", (String) direccion.getText());
                 i.putExtra("mail", (String) mail.getText());

@@ -12,23 +12,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class FirebaseUtils {
     public static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public static ArrayList<EventModel> recoverRecommendedEvents() {
-        ArrayList<EventModel> eventModels = new ArrayList<>();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        return eventModels;
-
+    public static Task<QuerySnapshot> getUserEvents(String userId) {
+        return db.collection("events")
+                .whereEqualTo("owner", userId)
+                .get();
     }
 
     public static Task<DocumentSnapshot> getUser(String id) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        return db.collection("user").document(id).get();
+        return db.collection("users").document(id).get();
     }
 
     public static void createEvent(EventModel event) {

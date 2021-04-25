@@ -17,10 +17,11 @@ public class EventModel {
     public String direction;
     public ArrayList<UserModel> assistants;
     public int maxParticipants;
+    public String owner;
     public EventModel() {
-        new EventModel("", "", "", ConstantsUtils.TYPE_OTHER, new Date(), "", new ArrayList<>(), 0);
+        new EventModel("", "", "", ConstantsUtils.TYPE_OTHER, new Date(), "", new ArrayList<>(), 0, "");
     }
-    public EventModel(String databaseId, String title, String description, int sport_type, Date date, String direction, ArrayList<UserModel> assistants, int maxParticipants) {
+    public EventModel(String databaseId, String title, String description, int sport_type, Date date, String direction, ArrayList<UserModel> assistants, int maxParticipants, String ownerId) {
         this.title = title;
         this.databaseId = databaseId;
         this.description = description;
@@ -29,6 +30,7 @@ public class EventModel {
         this.direction = direction;
         this.assistants = assistants;
         this.maxParticipants = maxParticipants;
+        this.owner = ownerId;
     }
     public void createOrUpdateEvent(){
         if (TextUtils.isEmpty(databaseId))

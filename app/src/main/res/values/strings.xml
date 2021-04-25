@@ -64,4 +64,13 @@
     <string name="padel">Padel</string>
     <string name="hockey">Hockey</string>
     <string name="badminton">Badminton</string>
+    <string name="voley">Voley</string>
+    <string name="pingpong">Ping-Pong</string>
+    <string name="baseball">Béisbol</string>
+    <string name="bowling">Bolos</string>
+    <string name="boxing">Boxeo</string>
+    <string name="other">Otros</string>
+
+
+
 </resources>

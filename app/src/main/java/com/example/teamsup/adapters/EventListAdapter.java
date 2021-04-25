@@ -14,35 +14,38 @@ import androidx.core.content.ContextCompat;
 
 import com.example.teamsup.fragments.EventItem;
 import com.example.teamsup.R;
+import com.example.teamsup.models.EventModel;
+import com.example.teamsup.utils.ConstantsUtils;
 
 import java.util.ArrayList;
 
-public class EventListAdapter extends ArrayAdapter<EventItem> {
-         public EventListAdapter(@NonNull Context context, ArrayList<EventItem> eventItemArrayAdapter) {
-        super(context, 0, eventItemArrayAdapter);
+public class EventListAdapter extends ArrayAdapter<EventModel> {
+         public EventListAdapter(@NonNull Context context, ArrayList<EventModel> eventModels) {
+        super(context, 0, eventModels);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
-        EventItem detectedActivity = getItem(position);
+        EventModel detectedActivity = getItem(position);
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(
                     R.layout.fragment_event_item, parent, false);
         }
 
         // Find the UI widgets.
-        TextView activityName = (TextView) view.findViewById(R.id.event_type);
-        TextView activityConfidenceLevel = (TextView) view.findViewById(
+        TextView activityType = (TextView) view.findViewById(R.id.event_type);
+        TextView activityTitle = (TextView) view.findViewById(
                 R.id.event_title);
-        ImageView activityImage = (ImageView) view.findViewById(R.id.image_sportico);
+        ImageView activityLogo = (ImageView) view.findViewById(R.id.image_sportico);
 
         // Populate widgets with values.
         if (detectedActivity != null) {
-            activityName.setText("TEST ITEM");
+            activityTitle.setText(detectedActivity.title);
 
-            activityConfidenceLevel.setText("TEST TITLE OF ITEM");
-            activityImage.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.sportico_other));
+            activityType.setText(ConstantsUtils.recoverEventName(detectedActivity.sport_type));
+            activityLogo.setImageDrawable(ContextCompat.getDrawable(getContext(),
+                    ConstantsUtils.recoverEventImage(detectedActivity.sport_type)));
         }
         return view;
     }
