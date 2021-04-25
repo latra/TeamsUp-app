@@ -26,9 +26,13 @@ public class FirebaseUtils {
                 .get();
     }
     public static Task<QuerySnapshot> getRecommendedEvents(ArrayList<Integer> userPreferences) {
-        return  db.collection("events")
+        if (userPreferences.size() > 0)
+            return  db.collection("events")
                 .whereIn("sport_type", userPreferences)
                 .get();
+        else
+            return  db.collection("events")
+                    .get();
 
     }
     public static Task<QuerySnapshot> getAllEvents() {

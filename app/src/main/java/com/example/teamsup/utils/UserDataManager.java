@@ -21,17 +21,19 @@ public class UserDataManager {
 
     public void ReadUserData(UserModel model) {
 
-
-        Set<String> deportes = new HashSet<>();
-        for (int value : model.eventTypesPreferences)
-            deportes.add(String.valueOf(value));
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(ConstantsUtils.KEY_DIRECTION, model.direction);
-        editor.putString(ConstantsUtils.KEY_EMAIL, model.email);
-        editor.putString(ConstantsUtils.KEY_USERNAME, model.username);
-        editor.putStringSet(ConstantsUtils.KEY_SPORT, deportes);
-        editor.commit();
-
+        if (model != null) {
+            Set<String> deportes = new HashSet<>();
+            if (model.eventTypesPreferences != null) {
+                for (int value : model.eventTypesPreferences)
+                    deportes.add(String.valueOf(value));
+            }
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(ConstantsUtils.KEY_DIRECTION, model.direction);
+            editor.putString(ConstantsUtils.KEY_EMAIL, model.email);
+            editor.putString(ConstantsUtils.KEY_USERNAME, model.username);
+            editor.putStringSet(ConstantsUtils.KEY_SPORT, deportes);
+            editor.commit();
+        }
     }
     public ArrayList<Integer> getTypePreferences() {
         Set<String> hashSet = sharedPreferences.getStringSet(ConstantsUtils.KEY_SPORT, new HashSet<>());
