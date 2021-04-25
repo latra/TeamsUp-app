@@ -124,6 +124,7 @@ public class NearEventsMap extends Fragment implements OnMapReadyCallback {
                     new LatLng(lastUserLocation.getLatitude(), lastUserLocation.getLongitude()),
                     10f));
 
+            googleMap.setMyLocationEnabled(true);
 
             googleMap.addCircle(new CircleOptions()
                     .center(new LatLng(lastUserLocation.getLatitude(), lastUserLocation.getLongitude()))
