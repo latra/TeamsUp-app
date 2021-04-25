@@ -75,6 +75,8 @@
     <string name="permissions_no_accepted">Por favor, habilita el acceso a la ubicación desde Ajustes</string>
     <string name="permission_denied_explanation">Se necesita otorgar acceso a ubicación para mejorar la experiencia de Usuario</string>
     <string name="settings">Ajustes</string>
+    <string name="nombre_evento">Evento1</string>
+    <string name="tematicaEvento">Temática</string>
 
 
 </resources>
