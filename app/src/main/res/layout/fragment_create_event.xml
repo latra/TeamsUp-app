@@ -127,7 +127,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:onClick="cancel"
             android:text="@string/cancelar_creacion_evento"
             android:textSize="16sp" />
 

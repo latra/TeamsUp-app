@@ -22,6 +22,7 @@ import com.example.teamsup.models.UserModel;
 import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.utils.FirebaseUtils;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.auth.User;
@@ -45,13 +46,15 @@ public class UserInfo extends Fragment {
     SharedPreferences sharedpreferences;
 
     Button misEventos;
-public void setValues(){
-    direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
-    usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
-    mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
-    deletePreferences();
-    setPreferences();
-}
+
+    public void setValues() {
+        direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
+        usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
+        mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
+        deletePreferences();
+        setPreferences();
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
@@ -97,11 +100,13 @@ public void setValues(){
         }
 
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         setValues();
         super.onResume();
     }
+
     private void deletePreferences() {
         ImageView im1 = getView().findViewById(R.id.ImagePref1);
         im1.setImageResource(android.R.color.transparent);
@@ -150,8 +155,8 @@ public void setValues(){
     }
 
     public void createEvent() {
-        Intent intent = new Intent(getContext(), CreateEvent.class);
-        startActivity(intent);
+        ((TemplateActivity) getActivity()).updateFragment(new CreateEvent());
+
     }
 
     @Override
