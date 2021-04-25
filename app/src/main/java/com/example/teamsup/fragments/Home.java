@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.adapters.EventListAdapter;
 import com.example.teamsup.R;
 import com.example.teamsup.models.EventBOModel;

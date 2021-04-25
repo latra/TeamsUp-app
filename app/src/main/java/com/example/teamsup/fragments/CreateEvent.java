@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.teamsup.R;
+import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.models.EventModel;
 import com.firebase.geofire.GeoFireUtils;

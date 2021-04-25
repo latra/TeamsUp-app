@@ -41,6 +41,9 @@
         <activity
             android:name=".activities.EditProfileActivity"
             android:theme="@style/Theme.TeamsUp.NoActionBar" />
+        <activity
+            android:name=".activities.TemplateActivity"
+            android:theme="@style/Theme.TeamsUp.NoActionBar" />
     </application>
 
 </manifest>
