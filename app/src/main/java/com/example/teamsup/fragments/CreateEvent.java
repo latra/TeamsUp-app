@@ -16,6 +16,7 @@ import com.example.teamsup.R;
 import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.models.EventModel;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -59,6 +60,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener{
             event.direction = input_direction.getText().toString();
             event.maxParticipants = Integer.parseInt(input_maxparticipants.getText().toString());
             event.sport_type = ConstantsUtils.recoverEventType(spinner.getSelectedItemPosition());
+            event.owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
             event.createOrUpdateEvent();
             ((TemplateActivity)getActivity()).updateFragment(new Home());
         });

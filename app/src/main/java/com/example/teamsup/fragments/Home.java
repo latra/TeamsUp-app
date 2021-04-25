@@ -41,13 +41,7 @@ public class Home extends Fragment {
                 R.id.near_event_list);
         ListView recommendedEventsListView = getView().findViewById(
                 R.id.recommended_event_list);
-        ArrayList<EventItem> nearEvents = new ArrayList<>();
-        nearEvents.add(new EventItem());
-        nearEvents.add(new EventItem());
-        nearEvents.add(new EventItem());
-        nearadapter = new EventListAdapter(getView().getContext(), nearEvents);
-        nearEventsListView.setAdapter(nearadapter);
-        recommendadapter = new EventListAdapter(getView().getContext(), nearEvents);
+
         recommendedEventsListView.setAdapter(recommendadapter);
 
 

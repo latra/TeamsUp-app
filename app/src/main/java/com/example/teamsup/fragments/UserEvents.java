@@ -1,6 +1,7 @@
 package com.example.teamsup.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.teamsup.adapters.EventListAdapter;
 import com.example.teamsup.R;
+import com.example.teamsup.models.EventModel;
+import com.example.teamsup.models.UserModel;
+import com.example.teamsup.utils.FirebaseUtils;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -27,12 +36,25 @@ public class UserEvents extends Fragment {
         ListView myEvents = getView().findViewById(
                 R.id.myEvents);
 
-        ArrayList<EventItem> events = new ArrayList<>();
-        events.add(new EventItem());
-        events.add(new EventItem());
-        events.add(new EventItem());
-        adapterEvents = new EventListAdapter(getView().getContext(), events);
-        myEvents.setAdapter(adapterEvents);
+        FirebaseUtils.getUserEvents(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<EventModel> events = new ArrayList<>();
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                events.add(document.toObject(EventModel.class));
+                                Log.d("TAG", document.getId() + " => " + document.getData());
+                            }
+                            adapterEvents = new EventListAdapter(view.getContext(), events);
+                            myEvents.setAdapter(adapterEvents);
+                        } else {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
 
     }
     @Override
