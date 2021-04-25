@@ -31,8 +31,7 @@ public class FirebaseUtils {
                 .whereIn("sport_type", userPreferences)
                 .get();
         else
-            return  db.collection("events")
-                    .get();
+            return  getAllEvents();
 
     }
     public static Task<QuerySnapshot> getAllEvents() {
