@@ -9,7 +9,6 @@ import com.example.teamsup.models.UserModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,6 +37,10 @@ public class FirebaseUtils {
         return  db.collection("events")
                 .get();
 
+    }
+
+    public static Task<DocumentSnapshot> getEvent(String id) {
+        return db.collection("events").document(id).get();
     }
 
     public static Task<DocumentSnapshot> getUser(String id) {
@@ -88,4 +91,6 @@ public class FirebaseUtils {
 
                 );
     }
+
+
 }

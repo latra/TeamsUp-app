@@ -68,8 +68,6 @@ public class EventItem extends Fragment {
         }
         infoButton = getView().findViewById(R.id.imageView6);
 
-        infoButton.setOnClickListener((view) -> ((TemplateActivity) getActivity()).updateFragment(new EventInfo()));
-
     }
 
     @Override
