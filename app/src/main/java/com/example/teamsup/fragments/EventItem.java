@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.teamsup.R;
+import com.example.teamsup.activities.TemplateActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +31,9 @@ public class EventItem extends Fragment {
     private String mParam1;
     private String mParam2;
     private String mParam3;
+
+
+    ImageView infoButton;
 
     public EventItem() {
         // Required empty public constructor
@@ -60,6 +66,10 @@ public class EventItem extends Fragment {
             mParam2 = getArguments().getString(DESCRIPTION);
             mParam3 = getArguments().getString(TYPE);
         }
+        infoButton = getView().findViewById(R.id.imageView6);
+
+        infoButton.setOnClickListener((view) -> ((TemplateActivity) getActivity()).updateFragment(new EventInfo()));
+
     }
 
     @Override
