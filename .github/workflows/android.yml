@@ -19,7 +19,7 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Creando archivo LocalProperties
-      run: touch local.properties
+      run: echo "MAPS_API_KEY=AAAAAAAAAAAAAA_AAAAAAAAAAA_AAAAAAAAAAAA" > local.properties
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
