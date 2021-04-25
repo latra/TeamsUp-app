@@ -1,4 +1,4 @@
-package com.example.teamsup;
+package com.example.teamsup.Fragments;
 
 
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.teamsup.adapters.EventListAdapter;
+import com.example.teamsup.R;
+import com.example.teamsup.activities.TemplateActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

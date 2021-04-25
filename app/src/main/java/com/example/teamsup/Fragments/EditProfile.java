@@ -1,4 +1,4 @@
-package com.example.teamsup;
+package com.example.teamsup.Fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+
+import com.example.teamsup.R;
 
 import java.util.HashSet;
 import java.util.Set;

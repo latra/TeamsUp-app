@@ -1,30 +1,27 @@
-package com.example.teamsup;
+package com.example.teamsup.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.teamsup.Fragments.DatePickerFragment;
+import com.example.teamsup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 
-public class Register_activity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
 
@@ -94,7 +91,7 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
     }
 
     public void cancel(View view) {
-        Toast.makeText(Register_activity.this, "Registro cancelado. ", Toast.LENGTH_LONG).show();
+        Toast.makeText(RegisterActivity.this, "Registro cancelado. ", Toast.LENGTH_LONG).show();
         finish();
     }
 
@@ -107,10 +104,10 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
 
     public void returnLogin() {
         if(checkBox.isChecked()){
-            Intent i = new Intent(Register_activity.this, LoginActivity.class);
+            Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(i);
         }else{
-            Toast.makeText(Register_activity.this, "Debes aceptar la política de privadiad ", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, "Debes aceptar la política de privadiad ", Toast.LENGTH_LONG).show();
         }
     }
 }

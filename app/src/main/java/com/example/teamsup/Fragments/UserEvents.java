@@ -1,4 +1,4 @@
-package com.example.teamsup;
+package com.example.teamsup.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.teamsup.adapters.EventListAdapter;
+import com.example.teamsup.R;
 
 import java.util.ArrayList;
 
