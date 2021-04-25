@@ -60,7 +60,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener{
             event.direction = input_direction.getText().toString();
             event.maxParticipants = Integer.parseInt(input_maxparticipants.getText().toString());
             event.sport_type = ConstantsUtils.recoverEventType(spinner.getSelectedItemPosition());
-            FirebaseUtils.createOrUploadEvent(event);
+            event.createOrUpdateEvent();
             ((TemplateActivity)getActivity()).updateFragment(new Home());
         });
     }

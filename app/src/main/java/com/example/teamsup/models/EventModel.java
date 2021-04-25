@@ -1,6 +1,9 @@
 package com.example.teamsup.models;
 
+import android.text.TextUtils;
+
 import com.example.teamsup.utils.ConstantsUtils;
+import com.example.teamsup.utils.FirebaseUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,5 +29,11 @@ public class EventModel {
         this.direction = direction;
         this.assistants = assistants;
         this.maxParticipants = maxParticipants;
+    }
+    public void createOrUpdateEvent(){
+        if (TextUtils.isEmpty(databaseId))
+            FirebaseUtils.createEvent(this);
+        else
+            FirebaseUtils.updateEvent(this);
     }
 }

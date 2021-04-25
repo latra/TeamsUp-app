@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 
 public class FirebaseUtils {
+    public static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public static ArrayList<EventModel> recoverRecommendedEvents() {
         ArrayList<EventModel> eventModels = new ArrayList<>();
@@ -30,34 +31,35 @@ public class FirebaseUtils {
         return db.collection("user").document(id).get();
     }
 
-    public static void createOrUploadEvent(EventModel event) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        if (event.databaseId != null && event.databaseId.length() > 0)
-            db.collection("events").document(event.databaseId).
-                    set(event)
-                    .addOnSuccessListener((a) ->
-                            Log.d("FB UPLOAD", "DocumentSnapshot added with ID: " + event.databaseId)
-                    )
-                    .addOnFailureListener((e) ->
-                            Log.w("FB UPLOAD", "Error adding document", e)
+    public static void createEvent(EventModel event) {
+        db.collection("events")
+                .add(event)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("FB UPLOAD", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        event.databaseId = documentReference.getId();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("FB UPLOAD", "Error adding document", e);
+                    }
+                });
+    }
 
-                    );
-        else
-            db.collection("events")
-                    .add(event)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d("FB UPLOAD", "DocumentSnapshot added with ID: " + documentReference.getId());
-                            event.databaseId = documentReference.getId();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("FB UPLOAD", "Error adding document", e);
-                        }
-                    });
+    public static void updateEvent(EventModel event) {
+        db.collection("events").document(event.databaseId).
+                set(event)
+                .addOnSuccessListener((a) ->
+                        Log.d("FB UPLOAD", "DocumentSnapshot added with ID: " + event.databaseId)
+                )
+                .addOnFailureListener((e) ->
+                        Log.w("FB UPLOAD", "Error adding document", e)
+
+                );
+
 
     }
 
