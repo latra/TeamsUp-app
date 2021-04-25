@@ -25,6 +25,7 @@ import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.models.EventModel;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.GeoPoint;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -85,8 +86,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
             event.owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
             if (calculated_address != null) {
                 event.direction = calculated_address.getAddressLine(0);
-                event.latitude = calculated_address.getLatitude();
-                event.longitude = calculated_address.getLongitude();
+                event.coordinates = new GeoPoint(calculated_address.getLatitude(), calculated_address.getLongitude());
             }
             event.createOrUpdateEvent();
             ((TemplateActivity) getActivity()).updateFragment(new Home());

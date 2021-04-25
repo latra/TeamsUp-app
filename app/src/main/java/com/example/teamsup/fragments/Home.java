@@ -4,7 +4,6 @@ package com.example.teamsup.fragments;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -22,12 +21,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.teamsup.BuildConfig;
 import com.example.teamsup.adapters.EventListAdapter;
 import com.example.teamsup.R;
 import com.example.teamsup.activities.TemplateActivity;
+import com.example.teamsup.models.EventBOModel;
 import com.example.teamsup.models.EventModel;
 import com.example.teamsup.utils.FirebaseUtils;
 import com.example.teamsup.utils.UserDataManager;
@@ -36,13 +35,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.android.gms.location.FusedLocationProviderClient;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.concurrent.Executor;
 
 /**
@@ -57,8 +55,7 @@ public class Home extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
 
-    private double userLatitude;
-    private double userLongitude;
+    GeoPoint userGeoPoint;
     private EventListAdapter nearadapter;
     private EventListAdapter recommendadapter;
     private FusedLocationProviderClient mFusedLocationClient;
@@ -70,50 +67,11 @@ public class Home extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        ListView nearEventsListView = getView().findViewById(
-                R.id.near_event_list);
-        ListView recommendedEventsListView = getView().findViewById(
-                R.id.recommended_event_list);
-        checkPermissions();
+
+        new Thread( () ->getData(view)).run();
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         getUserLocation();
-        UserDataManager userDataManager = new UserDataManager(getActivity());
-        FirebaseUtils.getRecommendedEvents(userDataManager.getTypePreferences())
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            ArrayList<EventModel> events = new ArrayList<>();
 
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                events.add(document.toObject(EventModel.class));
-                                Log.d("TAG", document.getId() + " => " + document.getData());
-                            }
-                            recommendadapter = new EventListAdapter(view.getContext(), events);
-                            recommendedEventsListView.setAdapter(recommendadapter);
-                        } else {
-                            Log.d("TAG", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-        FirebaseUtils.getAllEvents()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            ArrayList<EventModel> events = new ArrayList<>();
-
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                events.add(document.toObject(EventModel.class));
-                                Log.d("TAG", document.getId() + " => " + document.getData());
-                            }
-                            nearadapter = new EventListAdapter(view.getContext(), events);
-                            nearEventsListView.setAdapter(nearadapter);
-                        } else {
-                            Log.d("TAG", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
         FloatingActionButton floatingActionButton = view.findViewById(R.id.newEventButton);
         floatingActionButton.setOnClickListener((vw) -> ((TemplateActivity) getActivity()).updateFragment(new CreateEvent()));
     }
@@ -148,7 +106,13 @@ public class Home extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
-    private void checkPermissions() {
+    private void getData(View view) {
+        UserDataManager userDataManager = new UserDataManager(getActivity());
+        ListView nearEventsListView = getView().findViewById(
+                R.id.near_event_list);
+        ListView recommendedEventsListView = getView().findViewById(
+                R.id.recommended_event_list);
+
         if (ContextCompat.checkSelfPermission(
                 getContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED) {
@@ -156,11 +120,52 @@ public class Home extends Fragment {
             // Se recupera cada minuto para evitar sacurar a llamadas
             lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 0, (location) -> {
                 if (location != null) {
-                    userLatitude = location.getLongitude();
-                    userLongitude = location.getLatitude();
-                    Log.i("LATITUDE", String.valueOf(location.getLongitude()));
+                    userGeoPoint = new GeoPoint(location.getLatitude(), location.getLongitude());
+                    Log.i("LATITUDE", String.valueOf(location.getLatitude()));
                     Log.i("LONGITUDE", String.valueOf(location.getLongitude()));
                 }
+                FirebaseUtils.getRecommendedEvents(userDataManager.getTypePreferences())
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    ArrayList<EventBOModel> events = new ArrayList<>();
+
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        EventBOModel event = new EventBOModel();
+                                        event.eventModel = document.toObject(EventModel.class);
+                                        event.calculateDistance(userGeoPoint);
+                                        events.add(event);
+                                        Log.d("TAG", document.getId() + " => " + document.getData());
+                                    }
+                                    recommendadapter = new EventListAdapter(view.getContext(), events);
+                                    recommendedEventsListView.setAdapter(recommendadapter);
+                                } else {
+                                    Log.d("TAG", "Error getting documents: ", task.getException());
+                                }
+                            }
+                        });
+                FirebaseUtils.getAllEvents()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    ArrayList<EventBOModel> events = new ArrayList<>();
+
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        EventBOModel event = new EventBOModel();
+                                        event.eventModel = document.toObject(EventModel.class);
+                                        event.calculateDistance(userGeoPoint);
+                                        events.add(event);
+                                        Log.d("TAG", document.getId() + " => " + document.getData());
+                                    }
+                                    nearadapter = new EventListAdapter(view.getContext(), events);
+                                    nearEventsListView.setAdapter(nearadapter);
+                                } else {
+                                    Log.d("TAG", "Error getting documents: ", task.getException());
+                                }
+                            }
+                        });
             });
 
 

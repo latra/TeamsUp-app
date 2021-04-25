@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.utils.FirebaseUtils;
+import com.google.firebase.firestore.GeoPoint;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,12 +19,11 @@ public class EventModel {
     public ArrayList<UserModel> assistants;
     public int maxParticipants;
     public String owner;
-    public Double latitude;
-    public Double longitude;
+    public GeoPoint coordinates;
     public EventModel() {
-        new EventModel("", "", "", ConstantsUtils.TYPE_OTHER, new Date(), "", new ArrayList<>(), 0, "");
+        new EventModel("", "", "", ConstantsUtils.TYPE_OTHER, new Date(), "", new ArrayList<>(), 0, "", new GeoPoint(0, 0));
     }
-    public EventModel(String databaseId, String title, String description, int sport_type, Date date, String direction, ArrayList<UserModel> assistants, int maxParticipants, String ownerId) {
+    public EventModel(String databaseId, String title, String description, int sport_type, Date date, String direction, ArrayList<UserModel> assistants, int maxParticipants, String ownerId, GeoPoint geoPoint) {
         this.title = title;
         this.databaseId = databaseId;
         this.description = description;
@@ -33,6 +33,7 @@ public class EventModel {
         this.assistants = assistants;
         this.maxParticipants = maxParticipants;
         this.owner = ownerId;
+        this.coordinates = coordinates;
     }
     public void createOrUpdateEvent(){
         if (TextUtils.isEmpty(databaseId))
