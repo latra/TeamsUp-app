@@ -30,7 +30,7 @@
             android:name=".activities.RegisterActivity"
             android:theme="@style/Theme.TeamsUp.NoActionBar" />
         <activity
-            android:name=".Fragments.EditProfile"
+            android:name=".fragments.EditProfile"
             android:theme="@style/Theme.TeamsUp.NoActionBar" />
 
 

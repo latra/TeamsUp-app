@@ -2,9 +2,9 @@ package com.example.teamsup.activities;
 
 import android.os.Bundle;
 
-import com.example.teamsup.Fragments.Home;
+import com.example.teamsup.fragments.Home;
 import com.example.teamsup.R;
-import com.example.teamsup.Fragments.UserInfo;
+import com.example.teamsup.fragments.UserInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

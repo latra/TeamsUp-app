@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
-import com.example.teamsup.Fragments.EventItem;
+import com.example.teamsup.fragments.EventItem;
 import com.example.teamsup.R;
 
 import java.util.ArrayList;

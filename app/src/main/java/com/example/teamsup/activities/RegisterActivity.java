@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.teamsup.Fragments.DatePickerFragment;
+import com.example.teamsup.fragments.DatePickerFragment;
 import com.example.teamsup.R;
 import com.example.teamsup.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,11 +21,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.auth.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 

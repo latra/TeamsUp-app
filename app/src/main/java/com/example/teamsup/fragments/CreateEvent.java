@@ -1,4 +1,4 @@
-package com.example.teamsup.Fragments;
+package com.example.teamsup.fragments;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,7 +16,6 @@ import com.example.teamsup.R;
 import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.models.EventModel;
-import com.example.teamsup.utils.FirebaseUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

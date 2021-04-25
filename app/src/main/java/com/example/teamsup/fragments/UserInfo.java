@@ -1,4 +1,4 @@
-package com.example.teamsup.Fragments;
+package com.example.teamsup.fragments;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
