@@ -2,14 +2,11 @@ package com.example.teamsup.fragments;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-import android.graphics.Point;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +22,7 @@ import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.models.EventModel;
 import com.firebase.geofire.GeoFireUtils;
 import com.firebase.geofire.GeoLocation;
-import com.google.android.gms.tasks.Task;
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.GeoPoint;
 
@@ -79,20 +76,25 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
             event.title = input_name.getText().toString();
             try {
                 event.date = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(input_date.getText().toString() + " " + input_hour.getText().toString());
+
+                event.direction = input_direction.getText().toString();
+                event.maxParticipants = Integer.parseInt(input_maxparticipants.getText().toString());
+                event.sport_type = ConstantsUtils.recoverEventType(spinner.getSelectedItemPosition());
+                event.owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                if (calculated_address != null) {
+                    event.direction = calculated_address.getAddressLine(0);
+                    event.coordinates = new GeoPoint(calculated_address.getLatitude(), calculated_address.getLongitude());
+                    event.hash = GeoFireUtils.getGeoHashForLocation(new GeoLocation(calculated_address.getLatitude(), calculated_address.getLongitude()));
+
+                }
+                event.createOrUpdateEvent();
+                ((TemplateActivity) getActivity()).updateFragment(new Home());
             } catch (ParseException e) {
                 event.date = new Date();
             }
-            event.direction = input_direction.getText().toString();
-            event.maxParticipants = Integer.parseInt(input_maxparticipants.getText().toString());
-            event.sport_type = ConstantsUtils.recoverEventType(spinner.getSelectedItemPosition());
-            event.owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            if (calculated_address != null) {
-                event.direction = calculated_address.getAddressLine(0);
-                event.coordinates = new GeoPoint(calculated_address.getLatitude(), calculated_address.getLongitude());
-                event.hash = GeoFireUtils.getGeoHashForLocation(new GeoLocation(calculated_address.getLatitude(), calculated_address.getLongitude()));
-
-            }
-            event.createOrUpdateEvent();
+        });
+        MaterialTextView cancelButton = view.findViewById(R.id.tvCancelar);
+        cancelButton.setOnClickListener((vw) -> {
             ((TemplateActivity) getActivity()).updateFragment(new Home());
         });
     }

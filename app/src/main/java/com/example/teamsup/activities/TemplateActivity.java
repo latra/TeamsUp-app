@@ -61,9 +61,9 @@ public class TemplateActivity extends AppCompatActivity {
         ImageView userIcon = findViewById(R.id.UserIco);
         ImageView mapIcon = findViewById(R.id.mapIcon);
         ImageView homeIcon = findViewById(R.id.HomeIco);
-        userIcon.setOnClickListener((view) -> updateFragment(activeFragment = new UserInfo()));
-        homeIcon.setOnClickListener((view) -> updateFragment(activeFragment = new Home()));
-        mapIcon.setOnClickListener((view) -> updateFragment(activeFragment = new NearEventsMap()));
+        userIcon.setOnClickListener((view) -> updateFragment(new UserInfo()));
+        homeIcon.setOnClickListener((view) -> updateFragment(new Home()));
+        mapIcon.setOnClickListener((view) -> updateFragment(new NearEventsMap()));
 
 
         new Thread(() -> getUserCoordinates()).run();
@@ -101,6 +101,7 @@ public class TemplateActivity extends AppCompatActivity {
         }
     }
     public void updateFragment(Fragment fragment) {
+        activeFragment = fragment;
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_place, fragment);
         ft.commit();
