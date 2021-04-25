@@ -15,6 +15,11 @@ public class ConstantsUtils {
     public static final int TYPE_BASEBALL = 9;
     public static final int TYPE_BOWLING = 10;
     public static final int TYPE_BOXING = 11;
+    public static final String KEY_SPORT = "deportes";
+    public static final String KEY_EMAIL = "mail";
+    public static final String KEY_DIRECTION = "direction";
+    public static final String KEY_USERNAME = "username";
+
 
     public static int recoverEventType(int eventPosition) {
         switch (eventPosition) {

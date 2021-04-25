@@ -7,13 +7,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.teamsup.R;
-import com.example.teamsup.activities.RegisterActivity;
-import com.example.teamsup.activities.TemplateActivity;
+import com.example.teamsup.models.UserModel;
+import com.example.teamsup.utils.FirebaseUtils;
+import com.example.teamsup.utils.UserDataManager;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +27,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -97,6 +98,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login() {
+
+
+        UserDataManager userDataUtils = new UserDataManager(this);
+        FirebaseUtils.getUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                userDataUtils.ReadUserData(documentSnapshot.toObject(UserModel.class));
+            }
+        });
         Intent intent = new Intent(this, TemplateActivity.class);
         startActivity(intent);
 
