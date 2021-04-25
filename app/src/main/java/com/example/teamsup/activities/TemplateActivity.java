@@ -104,6 +104,7 @@ public class TemplateActivity extends AppCompatActivity {
         activeFragment = fragment;
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_place, fragment);
+        ft.addToBackStack("back");
         ft.commit();
     }
     public void ShowGrantPermissionsInfo() {
