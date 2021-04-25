@@ -62,6 +62,16 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         randomEvents = new ArrayList<>();
         RecommendedEvents = new ArrayList<>();
+
+        nearEventsListView = getView().findViewById(
+                R.id.near_event_list);
+        nearEventsListView.setOnItemClickListener(this);
+
+        recommendedEventsListView = getView().findViewById(
+                R.id.recommended_event_list);
+        recommendedEventsListView.setOnItemClickListener(this);
+
+
         getData(view);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         getUserLocation();
@@ -100,15 +110,9 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+
     private void getData(View view) {
         UserDataManager userDataManager = new UserDataManager(getActivity());
-        nearEventsListView = getView().findViewById(
-                R.id.near_event_list);
-        recommendedEventsListView = getView().findViewById(
-                R.id.recommended_event_list);
-        nearEventsListView.setOnItemClickListener(this);
-        recommendedEventsListView.setOnItemClickListener(this);
-
         FirebaseUtils.getRecommendedEvents(userDataManager.getTypePreferences())
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -148,19 +152,6 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener {
                         }
                     }
                 });
-        nearEventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-        recommendedEventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
     }
 
     public void updateData(GeoPoint userGeoPoint) {
@@ -180,7 +171,7 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (parent.getAdapter().getItem(position) != null) {
             EventBOModel event = (EventBOModel) parent.getAdapter().getItem(position);
-
+            ((TemplateActivity) getActivity()).updateFragment(new EventInfo(event));
         }
     }
 
