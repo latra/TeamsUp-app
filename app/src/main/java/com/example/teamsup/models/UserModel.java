@@ -1,5 +1,7 @@
 package com.example.teamsup.models;
 
+import com.example.teamsup.utils.FirebaseUtils;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,5 +24,9 @@ public class UserModel {
         this.birthDate = birthDate;
         this.eventTypesPreferences = eventTypesPreferences;
         this.direction = direction;
+    }
+
+    public void save() {
+        FirebaseUtils.createUser(this);
     }
 }
