@@ -2,6 +2,7 @@ package com.example.teamsup.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -35,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     EditText mail_input;
     EditText input_direction;
     EditText paswd_input;
+    EditText paswd_input2;
     CheckBox checkBox;
 
     Button registerBtn;
@@ -53,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         nombre_input = findViewById(R.id.input_name);
         mail_input = findViewById(R.id.input_mail2);
         paswd_input = findViewById(R.id.input_pswd2);
+        paswd_input2 = findViewById(R.id.input_pswd2_1);
         input_date.setOnClickListener(this);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,37 +63,60 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public void onClick(View v) {
                 String mail = mail_input.getText().toString();
                 String password = paswd_input.getText().toString();
+                String password2 = paswd_input2.getText().toString();
                 String nombre = nombre_input.getText().toString();
                 String direction = nombre_input.getText().toString();
                 String birthDate = nombre_input.getText().toString();
 
-                mAuth.createUserWithEmailAndPassword(mail, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    UserModel userModel = new UserModel();
-                                    userModel.databaseId = task.getResult().getUser().getUid();
-                                    userModel.direction = direction;
-                                    userModel.name = nombre;
-                                    userModel.email = mail;
-                                    try {
-                                        userModel.birthDate = new SimpleDateFormat("dd / MM / yyyy").parse(input_date.getText().toString());
-                                    } catch (ParseException ignored) {}
-                                    userModel.save();
-                                    Toast.makeText(getApplication(), "Usuari creat correctament!", Toast.LENGTH_SHORT).show();
-                                    finish();
+                if(!emptyFields(mail, password, nombre, direction, birthDate)){
+                    if(correctPassword(password, password2)){
+                        if(checkBox.isChecked()){
+                            mAuth.createUserWithEmailAndPassword(mail, password)
+                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                // Sign in success, update UI with the signed-in user's information
+                                                FirebaseUser user = mAuth.getCurrentUser();
+                                                UserModel userModel = new UserModel();
+                                                userModel.databaseId = task.getResult().getUser().getUid();
+                                                userModel.direction = direction;
+                                                userModel.name = nombre;
+                                                userModel.email = mail;
+                                                try {
+                                                    userModel.birthDate = new SimpleDateFormat("dd / MM / yyyy").parse(input_date.getText().toString());
+                                                } catch (ParseException ignored) {}
+                                                userModel.save();
+                                                Toast.makeText(getApplication(), "Usuari creat correctament!", Toast.LENGTH_SHORT).show();
+                                                finish();
 
-                                } else {
-                                    // If sign in fails, display a message to the user.Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getApplication(), "Email ja registat!", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                                            } else {
+                                                // If sign in fails, display a message to the user.Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getApplication(), "Email ja registat!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }else{
+                            Toast.makeText(getApplication(), "Debes aceptar la política de privacidad.", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(getApplication(), "Las conrtaseñas no coinciden.", Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    Toast.makeText(getApplication(), "Todos los campos deben de estar llenos.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+    }
+
+    private boolean correctPassword(String password, String password2) {
+        return password.equals(password2);
+    }
+
+    private boolean emptyFields(String mail, String password, String nombre, String direction, String birthDate) {
+        return TextUtils.isEmpty(mail) || TextUtils.isEmpty(password) || TextUtils.isEmpty(nombre) || TextUtils.isEmpty(direction) || TextUtils.isEmpty(birthDate);
     }
 
     @Override

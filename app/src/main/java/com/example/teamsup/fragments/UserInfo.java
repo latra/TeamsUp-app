@@ -18,14 +18,8 @@ import com.example.teamsup.R;
 import com.example.teamsup.activities.EditProfileActivity;
 import com.example.teamsup.activities.LoginActivity;
 import com.example.teamsup.activities.TemplateActivity;
-import com.example.teamsup.models.UserModel;
 import com.example.teamsup.utils.ConstantsUtils;
-import com.example.teamsup.utils.FirebaseUtils;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.Collections;
 import java.util.Set;
