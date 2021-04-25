@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.teamsup.activities.TemplateActivity;
@@ -40,7 +41,7 @@ import java.util.concurrent.Executor;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class Home extends Fragment {
+public class Home extends Fragment implements AdapterView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +62,16 @@ public class Home extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         randomEvents = new ArrayList<>();
         RecommendedEvents = new ArrayList<>();
+
+        nearEventsListView = getView().findViewById(
+                R.id.near_event_list);
+        nearEventsListView.setOnItemClickListener(this);
+
+        recommendedEventsListView = getView().findViewById(
+                R.id.recommended_event_list);
+        recommendedEventsListView.setOnItemClickListener(this);
+
+
         getData(view);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         getUserLocation();
@@ -99,13 +110,9 @@ public class Home extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+
     private void getData(View view) {
         UserDataManager userDataManager = new UserDataManager(getActivity());
-        nearEventsListView = getView().findViewById(
-                R.id.near_event_list);
-        recommendedEventsListView = getView().findViewById(
-                R.id.recommended_event_list);
-
         FirebaseUtils.getRecommendedEvents(userDataManager.getTypePreferences())
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -160,6 +167,13 @@ public class Home extends Fragment {
         }
     }
 
-
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (parent.getAdapter().getItem(position) != null) {
+            EventBOModel event = (EventBOModel) parent.getAdapter().getItem(position);
+            ((TemplateActivity) getActivity()).updateFragment(new EventInfo(event));
+        }
+    }
 
 }
+

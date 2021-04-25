@@ -3,6 +3,7 @@ package com.example.teamsup.utils;
 import com.example.teamsup.R;
 
 public class ConstantsUtils {
+    public static final int DEFAULT_RADAR = 20;
     public static final int TYPE_OTHER = 0;
     public static final int TYPE_FOOTBALL = 1;
     public static final int TYPE_BASKET = 2;
@@ -19,6 +20,7 @@ public class ConstantsUtils {
     public static final String KEY_EMAIL = "mail";
     public static final String KEY_DIRECTION = "direction";
     public static final String KEY_USERNAME = "username";
+    public static final String KEY_RADAR = "radar";
 
 
     public static int recoverEventType(int eventPosition) {

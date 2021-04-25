@@ -12,10 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
-import com.example.teamsup.fragments.EventItem;
 import com.example.teamsup.R;
 import com.example.teamsup.models.EventBOModel;
-import com.example.teamsup.models.EventModel;
 import com.example.teamsup.utils.ConstantsUtils;
 
 import java.util.ArrayList;
