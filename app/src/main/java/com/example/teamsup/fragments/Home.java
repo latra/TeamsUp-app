@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.teamsup.adapters.EventListAdapter;
@@ -40,7 +41,7 @@ import java.util.concurrent.Executor;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class Home extends Fragment {
+public class Home extends Fragment implements AdapterView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -105,6 +106,8 @@ public class Home extends Fragment {
                 R.id.near_event_list);
         recommendedEventsListView = getView().findViewById(
                 R.id.recommended_event_list);
+        nearEventsListView.setOnItemClickListener(this);
+        recommendedEventsListView.setOnItemClickListener(this);
 
         FirebaseUtils.getRecommendedEvents(userDataManager.getTypePreferences())
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -161,5 +164,11 @@ public class Home extends Fragment {
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (parent.getAdapter().getItem(position) != null) {
+            EventBOModel event = (EventBOModel) parent.getAdapter().getItem(position);
 
+        }
+    }
 }
