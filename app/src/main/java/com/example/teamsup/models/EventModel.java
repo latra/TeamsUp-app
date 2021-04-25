@@ -18,6 +18,8 @@ public class EventModel {
     public ArrayList<UserModel> assistants;
     public int maxParticipants;
     public String owner;
+    public Double latitude;
+    public Double longitude;
     public EventModel() {
         new EventModel("", "", "", ConstantsUtils.TYPE_OTHER, new Date(), "", new ArrayList<>(), 0, "");
     }
