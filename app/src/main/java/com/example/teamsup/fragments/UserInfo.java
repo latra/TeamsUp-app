@@ -22,6 +22,7 @@ import com.example.teamsup.models.UserModel;
 import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.utils.FirebaseUtils;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.auth.User;
@@ -150,8 +151,8 @@ public void setValues(){
     }
 
     public void createEvent() {
-        Intent intent = new Intent(getContext(), CreateEvent.class);
-        startActivity(intent);
+        FloatingActionButton floatingActionButton = getView().findViewById(R.id.newEventButton);
+        floatingActionButton.setOnClickListener((vw) -> ((TemplateActivity)getActivity()).updateFragment(new CreateEvent()));
     }
 
     @Override
