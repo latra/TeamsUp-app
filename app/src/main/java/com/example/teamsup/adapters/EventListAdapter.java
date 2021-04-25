@@ -1,4 +1,4 @@
-package com.example.teamsup;
+package com.example.teamsup.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,18 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import com.example.teamsup.Fragments.EventItem;
+import com.example.teamsup.R;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class EventListAdapter extends ArrayAdapter<EventItem> {
-         EventListAdapter(@NonNull Context context, ArrayList<EventItem> eventItemArrayAdapter) {
+         public EventListAdapter(@NonNull Context context, ArrayList<EventItem> eventItemArrayAdapter) {
         super(context, 0, eventItemArrayAdapter);
     }
 

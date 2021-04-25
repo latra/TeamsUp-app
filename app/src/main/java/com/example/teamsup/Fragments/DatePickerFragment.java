@@ -1,4 +1,4 @@
-package com.example.teamsup;
+package com.example.teamsup.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;

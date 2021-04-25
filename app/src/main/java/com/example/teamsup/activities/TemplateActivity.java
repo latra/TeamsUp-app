@@ -1,17 +1,15 @@
-package com.example.teamsup;
+package com.example.teamsup.activities;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.teamsup.Fragments.Home;
+import com.example.teamsup.R;
+import com.example.teamsup.Fragments.UserInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class TemplateActivity extends AppCompatActivity {

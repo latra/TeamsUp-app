@@ -1,11 +1,14 @@
 
 
-package com.example.teamsup;
+package com.example.teamsup.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.teamsup.R;
+import com.example.teamsup.activities.RegisterActivity;
+import com.example.teamsup.activities.TemplateActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -83,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registrate(View view) {
-        Intent intent = new Intent(this, Register_activity.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 

@@ -1,4 +1,4 @@
-package com.example.teamsup;
+package com.example.teamsup.Fragments;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.teamsup.R;
+import com.example.teamsup.activities.TemplateActivity;
 
 import java.util.Collections;
 import java.util.Set;
