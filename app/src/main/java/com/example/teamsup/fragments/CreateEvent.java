@@ -3,6 +3,7 @@ package com.example.teamsup.fragments;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
 
     }
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         geocoder = new Geocoder(getContext());
@@ -74,7 +76,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
             EventModel event = new EventModel();
             event.title = input_name.getText().toString();
             try {
-                event.date = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(input_date.getText().toString() + " " + input_hour.getText().toString());
+                event.date = new SimpleDateFormat("dd / MM / yyyy hh:mm").parse(input_date.getText().toString() + " " + input_hour.getText().toString());
 
                 event.direction = input_direction.getText().toString();
                 event.maxParticipants = Integer.parseInt(input_maxparticipants.getText().toString());
