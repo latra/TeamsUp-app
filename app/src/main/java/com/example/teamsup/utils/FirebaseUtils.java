@@ -9,10 +9,13 @@ import com.example.teamsup.models.UserModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class FirebaseUtils {
     public static FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -21,6 +24,17 @@ public class FirebaseUtils {
         return db.collection("events")
                 .whereEqualTo("owner", userId)
                 .get();
+    }
+    public static Task<QuerySnapshot> getRecommendedEvents(ArrayList<Integer> userPreferences) {
+        return  db.collection("events")
+                .whereIn("sport_type", userPreferences)
+                .get();
+
+    }
+    public static Task<QuerySnapshot> getAllEvents() {
+        return  db.collection("events")
+                .get();
+
     }
 
     public static Task<DocumentSnapshot> getUser(String id) {

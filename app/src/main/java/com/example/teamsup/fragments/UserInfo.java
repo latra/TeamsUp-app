@@ -19,6 +19,7 @@ import com.example.teamsup.activities.EditProfileActivity;
 import com.example.teamsup.activities.LoginActivity;
 import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.models.UserModel;
+import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.utils.FirebaseUtils;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,24 +62,20 @@ public class UserInfo extends Fragment {
             Intent i = new Intent(getActivity(), LoginActivity.class);
             startActivity(i);
         }));
-        String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseUtils.getUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                UserModel userModel = documentSnapshot.toObject(UserModel.class);
-                if (userModel != null) {
-                    direccion.setText(userModel.direction);
-                    usuario.setText(userModel.username);
-                    mail.setText(userModel.email);
-                }
-            }
-        });
+
+        direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
+        usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
+        mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
+        deletePreferences();
+        setPreferences();
+
         editbutton.setOnClickListener((v) -> {
-                Intent i = new Intent(getActivity(), EditProfileActivity.class);
-                i.putExtra("usuario", (String) usuario.getText());
-                i.putExtra("direccion", (String) direccion.getText());
-                i.putExtra("mail", (String) mail.getText());
-                startActivityForResult(i, 2);
+            Intent i = new Intent(getActivity(), EditProfileActivity.class);
+            // Lo comento porque no veo que sentido tiene hacerlo aquí :/
+            //                i.putExtra("usuario", (String) usuario.getText());
+            //                i.putExtra("direccion", (String) direccion.getText());
+            //                i.putExtra("mail", (String) mail.getText());
+            startActivityForResult(i, 2);
         });
         Button createEvent = view.findViewById(R.id.crear_evento);
         createEvent.setOnClickListener((v) -> createEvent());
@@ -131,12 +128,12 @@ public class UserInfo extends Fragment {
     }
 
     private void setPreferences() {
-        Set<String> deportes = sharedpreferences.getStringSet("Deportes", Collections.singleton(""));
+        Set<String> deportes = sharedpreferences.getStringSet(ConstantsUtils.KEY_SPORT, Collections.singleton(""));
         int img_pos = 1;
 
         for (String deporte : deportes) {
             int id_img = getResources().getIdentifier("ImagePref" + img_pos, "id", getActivity().getPackageName());
-            int id_drawable = getResources().getIdentifier("sportico_" + deporte, "drawable", getActivity().getPackageName());
+            int id_drawable = ConstantsUtils.recoverEventImage(Integer.parseInt(deporte));
 
             ImageView img = getView().findViewById(id_img);
             img.setImageResource(id_drawable);
