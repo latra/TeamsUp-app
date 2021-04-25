@@ -44,26 +44,24 @@ public class Home extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
     ArrayList<EventBOModel> RecommendedEvents;
     ArrayList<EventBOModel> randomEvents;
-    GeoPoint userGeoPoint;
     private EventListAdapter nearadapter;
     private EventListAdapter recommendadapter;
     private FusedLocationProviderClient mFusedLocationClient;
     protected Location mLastLocation;
-    ListView nearEventsListView ;
+    ListView nearEventsListView;
     ListView recommendedEventsListView;
+
     public Home() {
         // Required empty public constructor
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
-        new Thread(() -> getData(view)).run();
+        randomEvents = new ArrayList<>();
+        RecommendedEvents = new ArrayList<>();
+        getData(view);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         getUserLocation();
 
@@ -103,7 +101,7 @@ public class Home extends Fragment {
 
     private void getData(View view) {
         UserDataManager userDataManager = new UserDataManager(getActivity());
-       nearEventsListView = getView().findViewById(
+        nearEventsListView = getView().findViewById(
                 R.id.near_event_list);
         recommendedEventsListView = getView().findViewById(
                 R.id.recommended_event_list);
@@ -113,7 +111,6 @@ public class Home extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            RecommendedEvents = new ArrayList<>();
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 EventBOModel event = new EventBOModel();
@@ -134,7 +131,6 @@ public class Home extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            randomEvents = new ArrayList<>();
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 EventBOModel event = new EventBOModel();
@@ -152,15 +148,18 @@ public class Home extends Fragment {
     }
 
     public void updateData(GeoPoint userGeoPoint) {
-        for (EventBOModel event : randomEvents)
-            event.calculateDistance(userGeoPoint);
-        nearEventsListView.setAdapter(nearadapter);
+        if (randomEvents != null && RecommendedEvents != null) {
+            for (EventBOModel event : randomEvents)
+                event.calculateDistance(userGeoPoint);
 
-        for (EventBOModel event : RecommendedEvents)
-            event.calculateDistance(userGeoPoint);
-        recommendedEventsListView.setAdapter(recommendadapter);
+            nearEventsListView.setAdapter(nearadapter);
 
-
+            for (EventBOModel event : RecommendedEvents)
+                event.calculateDistance(userGeoPoint);
+            recommendedEventsListView.setAdapter(recommendadapter);
+        }
     }
+
+
 
 }

@@ -46,13 +46,15 @@ public class UserInfo extends Fragment {
     SharedPreferences sharedpreferences;
 
     Button misEventos;
-public void setValues(){
-    direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
-    usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
-    mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
-    deletePreferences();
-    setPreferences();
-}
+
+    public void setValues() {
+        direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
+        usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
+        mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
+        deletePreferences();
+        setPreferences();
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
@@ -98,11 +100,13 @@ public void setValues(){
         }
 
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         setValues();
         super.onResume();
     }
+
     private void deletePreferences() {
         ImageView im1 = getView().findViewById(R.id.ImagePref1);
         im1.setImageResource(android.R.color.transparent);
@@ -151,8 +155,8 @@ public void setValues(){
     }
 
     public void createEvent() {
-        FloatingActionButton floatingActionButton = getView().findViewById(R.id.newEventButton);
-        floatingActionButton.setOnClickListener((vw) -> ((TemplateActivity)getActivity()).updateFragment(new CreateEvent()));
+        ((TemplateActivity) getActivity()).updateFragment(new CreateEvent());
+
     }
 
     @Override
