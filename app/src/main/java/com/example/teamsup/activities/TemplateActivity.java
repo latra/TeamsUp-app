@@ -12,9 +12,11 @@ import android.os.Bundle;
 import com.example.teamsup.BuildConfig;
 import com.example.teamsup.fragments.Home;
 import com.example.teamsup.R;
+import com.example.teamsup.fragments.NearEventsMap;
 import com.example.teamsup.fragments.UserInfo;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -43,9 +45,17 @@ public class TemplateActivity extends AppCompatActivity {
         updateFragment(new Home());
 
         ImageView userIcon = findViewById(R.id.UserIco);
+        ImageView mapIcon = findViewById(R.id.mapIcon);
         ImageView homeIcon = findViewById(R.id.HomeIco);
         userIcon.setOnClickListener((view) -> updateFragment(new UserInfo()));
         homeIcon.setOnClickListener((view) -> updateFragment(new Home()));
+        mapIcon.setOnClickListener((view) -> {
+            SupportMapFragment mapFragment = SupportMapFragment.newInstance();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragment_place, mapFragment)
+                    .commit();
+        });
 
 
     }
