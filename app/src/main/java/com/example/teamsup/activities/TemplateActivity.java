@@ -68,12 +68,6 @@ public class TemplateActivity extends AppCompatActivity {
 
         new Thread(() -> getUserCoordinates()).run();
 
-    public void updateFragment(Fragment fragment) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_place, fragment);
-        ft.addToBackStack("back");
-        ft.commit();
-
     }
     public void getUserCoordinates(){
         if (ContextCompat.checkSelfPermission(
