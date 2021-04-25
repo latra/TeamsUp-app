@@ -83,6 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="445dp"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/direccionUser"
             android:layout_width="wrap_content"
@@ -114,54 +115,75 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/ImagePref1"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref2"
                 android:layout_width="30sp"
                 android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref3"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref4"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref5"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref6"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref7"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref8"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref9"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref10"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
+
             <ImageView
                 android:id="@+id/ImagePref11"
                 android:layout_width="30sp"
-                android:layout_height="30sp"/>
+                android:layout_height="30sp" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15sp"
+            android:layout_marginEnd="15sp"
+            android:backgroundTint="#3C887E"
+            android:text="@string/logout" />
 
     </LinearLayout>
 

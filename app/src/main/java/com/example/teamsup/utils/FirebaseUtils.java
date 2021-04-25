@@ -63,33 +63,16 @@ public class FirebaseUtils {
 
     }
 
-    public static void createOrUpdateUser(UserModel user) {
+    public static void createUser(UserModel user) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        if (user.databaseId != null && user.databaseId.length() > 0)
-            db.collection("users").document(user.databaseId).
-                    set(user)
-                    .addOnSuccessListener((a) ->
-                            Log.d("FB UPLOAD", "DocumentSnapshot added with ID: " + user.databaseId)
-                    )
-                    .addOnFailureListener((e) ->
-                            Log.w("FB UPLOAD", "Error adding document", e)
+        db.collection("users").document(user.databaseId).
+                set(user)
+                .addOnSuccessListener((a) ->
+                        Log.d("FB UPLOAD", "DocumentSnapshot added with ID: " + user.databaseId)
+                )
+                .addOnFailureListener((e) ->
+                        Log.w("FB UPLOAD", "Error adding document", e)
 
-                    );
-        else
-            db.collection("users")
-                    .add(user)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d("FB UPLOAD", "DocumentSnapshot added with ID: " + documentReference.getId());
-                            user.databaseId = documentReference.getId();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("FB UPLOAD", "Error adding document", e);
-                        }
-                    });
+                );
     }
 }
