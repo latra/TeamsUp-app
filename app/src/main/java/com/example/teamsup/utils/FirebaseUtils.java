@@ -41,6 +41,10 @@ public class FirebaseUtils {
 
     }
 
+    public static Task<DocumentSnapshot> getEvent(String id) {
+        return db.collection("events").document(id).get();
+    }
+
     public static Task<DocumentSnapshot> getUser(String id) {
         return db.collection("users").document(id).get();
     }

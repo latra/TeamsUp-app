@@ -148,6 +148,19 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener {
                         }
                     }
                 });
+        nearEventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+        recommendedEventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
     }
 
     public void updateData(GeoPoint userGeoPoint) {
@@ -163,7 +176,6 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener {
         }
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (parent.getAdapter().getItem(position) != null) {
@@ -171,4 +183,6 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener {
 
         }
     }
+
 }
+
