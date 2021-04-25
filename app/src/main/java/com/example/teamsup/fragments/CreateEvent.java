@@ -23,6 +23,8 @@ import com.example.teamsup.R;
 import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.models.EventModel;
+import com.firebase.geofire.GeoFireUtils;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.GeoPoint;
@@ -87,6 +89,8 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
             if (calculated_address != null) {
                 event.direction = calculated_address.getAddressLine(0);
                 event.coordinates = new GeoPoint(calculated_address.getLatitude(), calculated_address.getLongitude());
+                event.hash = GeoFireUtils.getGeoHashForLocation(new GeoLocation(calculated_address.getLatitude(), calculated_address.getLongitude()));
+
             }
             event.createOrUpdateEvent();
             ((TemplateActivity) getActivity()).updateFragment(new Home());
