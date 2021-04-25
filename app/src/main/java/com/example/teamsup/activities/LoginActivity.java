@@ -18,11 +18,14 @@ import com.google.firebase.auth.FirebaseUser;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -52,26 +55,29 @@ public class LoginActivity extends AppCompatActivity {
 
         if (mAuth.getCurrentUser() != null) login();
 
-        btnEntrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnEntrar.setOnClickListener((view) -> {
                 String email = input_email.getText().toString();
                 String password = input_password.getText().toString();
-
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    login();
-                                } else {
-                                    Toast.makeText(getApplication(), "Email y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        login();
+                                    } else {
+                                        Toast.makeText(getApplication(), "Email y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
-            }
-        });
+                            });
+                }
+                else if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplication(), "Debes introducir un Email", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplication(), "Debes introducir una contraseña", Toast.LENGTH_SHORT).show();
 
+                }
+            });
     }
 
 
