@@ -14,20 +14,21 @@ import androidx.core.content.ContextCompat;
 
 import com.example.teamsup.fragments.EventItem;
 import com.example.teamsup.R;
+import com.example.teamsup.models.EventBOModel;
 import com.example.teamsup.models.EventModel;
 import com.example.teamsup.utils.ConstantsUtils;
 
 import java.util.ArrayList;
 
-public class EventListAdapter extends ArrayAdapter<EventModel> {
-         public EventListAdapter(@NonNull Context context, ArrayList<EventModel> eventModels) {
+public class EventListAdapter extends ArrayAdapter<EventBOModel> {
+         public EventListAdapter(@NonNull Context context, ArrayList<EventBOModel> eventModels) {
         super(context, 0, eventModels);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
-        EventModel detectedActivity = getItem(position);
+        EventBOModel detectedActivity = getItem(position);
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(
                     R.layout.fragment_event_item, parent, false);
@@ -38,14 +39,15 @@ public class EventListAdapter extends ArrayAdapter<EventModel> {
         TextView activityTitle = (TextView) view.findViewById(
                 R.id.event_title);
         ImageView activityLogo = (ImageView) view.findViewById(R.id.image_sportico);
-
+        TextView distanceText = view.findViewById(R.id.eventDistance);
         // Populate widgets with values.
         if (detectedActivity != null) {
-            activityTitle.setText(detectedActivity.title);
+            activityTitle.setText(detectedActivity.eventModel.title);
+            distanceText.setText(String.format("%.1f KM", detectedActivity.distance));
 
-            activityType.setText(ConstantsUtils.recoverEventName(detectedActivity.sport_type));
+            activityType.setText(ConstantsUtils.recoverEventName(detectedActivity.eventModel.sport_type));
             activityLogo.setImageDrawable(ContextCompat.getDrawable(getContext(),
-                    ConstantsUtils.recoverEventImage(detectedActivity.sport_type)));
+                    ConstantsUtils.recoverEventImage(detectedActivity.eventModel.sport_type)));
         }
         return view;
     }
