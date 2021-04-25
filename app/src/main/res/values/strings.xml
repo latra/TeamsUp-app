@@ -71,6 +71,11 @@
     <string name="boxing">Boxeo</string>
     <string name="other">Otros</string>
 
+    <!-- Permissions -->
+    <string name="permissions_no_accepted">Por favor, habilita el acceso a la ubicación desde Ajustes</string>
+    <string name="permission_denied_explanation">Se necesita otorgar acceso a ubicación para mejorar la experiencia de Usuario</string>
+    <string name="settings">Ajustes</string>
+
 
 
 </resources>
