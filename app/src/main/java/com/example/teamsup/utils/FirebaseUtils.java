@@ -6,13 +6,14 @@ import androidx.annotation.NonNull;
 
 import com.example.teamsup.models.EventModel;
 import com.example.teamsup.models.UserModel;
+import com.firebase.geofire.GeoQueryBounds;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -87,5 +88,15 @@ public class FirebaseUtils {
                         Log.w("FB UPLOAD", "Error adding document", e)
 
                 );
+    }
+
+    public static Query getNearEvents(GeoQueryBounds b) {
+
+            return db.collection("events")
+                    .orderBy("hash")
+                    .startAt(b.startHash)
+                    .endAt(b.endHash);
+
+
     }
 }
