@@ -19,7 +19,6 @@ import android.widget.ListView;
 
 import com.example.teamsup.adapters.EventListAdapter;
 import com.example.teamsup.R;
-import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.models.EventBOModel;
 import com.example.teamsup.models.EventModel;
 import com.example.teamsup.utils.FirebaseUtils;
