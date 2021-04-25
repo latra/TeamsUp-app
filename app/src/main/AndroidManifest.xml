@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.teamsup">
-<<<<<<< HEAD
 
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="${MAPS_API_KEY}" />
-=======
->>>>>>> 1b113466d6d90a4fd328b462f00f93e5bc9b69a4
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -20,8 +14,6 @@
 
     <uses-feature android:name="android.hardware.type.watch" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,18 +21,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamsUp">
-<<<<<<< HEAD
-=======
-        <service
-            android:name=".services.LocationService"
-            android:enabled="true"
-            android:exported="true"></service>
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
->>>>>>> 1b113466d6d90a4fd328b462f00f93e5bc9b69a4
+
         <activity android:name=".activities.TemplateActivity" />
         <activity
             android:name=".activities.LoginActivity"

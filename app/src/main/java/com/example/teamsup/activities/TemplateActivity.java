@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.example.teamsup.BuildConfig;
 import com.example.teamsup.R;
+import com.example.teamsup.fragments.Home;
 import com.example.teamsup.fragments.NearEventsMap;
 import com.example.teamsup.fragments.UserInfo;
 import com.google.android.gms.maps.MapFragment;
