@@ -20,14 +20,16 @@ public class EventBOModel {
 
     public void calculateDistance(GeoPoint userGeopoing) {
 
-        Location loc1 = new Location("");
-        loc1.setLatitude(eventModel.coordinates.getLatitude());
-        loc1.setLongitude(eventModel.coordinates.getLongitude());
+        if (userGeopoing != null && eventModel.coordinates != null) {
+            Location loc1 = new Location("");
+            loc1.setLatitude(eventModel.coordinates.getLatitude());
+            loc1.setLongitude(eventModel.coordinates.getLongitude());
 
-        Location loc2 = new Location("");
-        loc2.setLatitude(userGeopoing.getLatitude());
-        loc2.setLongitude(userGeopoing.getLongitude());
+            Location loc2 = new Location("");
+            loc2.setLatitude(userGeopoing.getLatitude());
+            loc2.setLongitude(userGeopoing.getLongitude());
 
-        this.distance =  loc1.distanceTo(loc2)/1000;
+            this.distance = loc1.distanceTo(loc2) / 1000;
+        }
     }
 }

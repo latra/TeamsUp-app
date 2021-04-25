@@ -102,7 +102,7 @@ public class NearEventsMap extends Fragment implements OnMapReadyCallback {
     }
 
     public void updateEvents() {
-        if (googleMap != null) {
+        if (googleMap != null && getContext() != null) {
             for (EventBOModel event : nearEvents) {
                 googleMap.addMarker(new MarkerOptions()
                         .position(new LatLng(event.eventModel.coordinates.getLatitude(), event.eventModel.coordinates.getLongitude()))
