@@ -45,7 +45,13 @@ public class UserInfo extends Fragment {
     SharedPreferences sharedpreferences;
 
     Button misEventos;
-
+public void setValues(){
+    direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
+    usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
+    mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
+    deletePreferences();
+    setPreferences();
+}
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
@@ -63,11 +69,7 @@ public class UserInfo extends Fragment {
             startActivity(i);
         }));
 
-        direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
-        usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
-        mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
-        deletePreferences();
-        setPreferences();
+        setValues();
 
         editbutton.setOnClickListener((v) -> {
             Intent i = new Intent(getActivity(), EditProfileActivity.class);
@@ -95,7 +97,11 @@ public class UserInfo extends Fragment {
         }
 
     }
-
+    @Override
+    public void onResume(){
+        setValues();
+        super.onResume();
+    }
     private void deletePreferences() {
         ImageView im1 = getView().findViewById(R.id.ImagePref1);
         im1.setImageResource(android.R.color.transparent);

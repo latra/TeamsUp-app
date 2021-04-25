@@ -44,5 +44,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-auth:20.0.4'
     compileOnly 'com.google.android.wearable:wearable:2.8.1'
-
+    // Java language implementation
+    def activity_version = "1.2.2"
+    implementation "androidx.activity:activity:$activity_version"
 }

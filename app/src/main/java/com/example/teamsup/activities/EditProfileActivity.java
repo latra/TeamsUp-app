@@ -71,31 +71,33 @@ public class EditProfileActivity extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UserModel userModel = new UserModel();
+                userModel.email = mail.getText().toString();
+                userModel.direction = direccion.getText().toString();
+                userModel.username = direccion.getText().toString();
+                userModel.eventTypesPreferences = new ArrayList<>();
+                if(checkbox_rugby.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_FOOTBALL);
+                if(checkbox_badminton.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BADMINTON);
+                if(checkbox_baseball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BASEBALL);
+                if(checkbox_basketball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BASKET);
+                if(checkbox_bowling.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BOWLING);
+                if(checkbox_boxing.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BOXING);
+                if(checkbox_football.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_FOOTBALL);
+                if(checkbox_hockey.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_HOCKEY);
+                if(checkbox_pingpong.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_PINGPONG);
+                if(checkbox_volleyball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_VOLEY);
+                if(checkbox_other.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_OTHER);
                 FirebaseUtils.getUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        UserModel userModel = documentSnapshot.toObject(UserModel.class);
+                        String userModelId = documentSnapshot.toObject(UserModel.class).databaseId;
                         if (userModel != null) {
-                            userModel.email = mail.getText().toString();
-                            userModel.direction = direccion.getText().toString();
-                            userModel.username = direccion.getText().toString();
-                            userModel.eventTypesPreferences = new ArrayList<>();
-                            if(checkbox_rugby.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_FOOTBALL);
-                            if(checkbox_badminton.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BADMINTON);
-                            if(checkbox_baseball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BASEBALL);
-                            if(checkbox_basketball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BASKET);
-                            if(checkbox_bowling.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BOWLING);
-                            if(checkbox_boxing.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BOXING);
-                            if(checkbox_football.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_FOOTBALL);
-                            if(checkbox_hockey.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_HOCKEY);
-                            if(checkbox_pingpong.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_PINGPONG);
-                            if(checkbox_volleyball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_VOLEY);
-                            if(checkbox_other.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_OTHER);
+                            userModel.databaseId = userModelId;
                             userModel.save();
-                            dataManager.ReadUserData(userModel);
                         }
                     }
                 });
+                dataManager.ReadUserData(userModel);
                 finish();
             }
         });
