@@ -52,6 +52,7 @@ public class TemplateActivity extends AppCompatActivity {
     public void updateFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_place, fragment);
+        ft.addToBackStack("back");
         ft.commit();
     }
 
