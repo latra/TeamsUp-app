@@ -74,12 +74,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                     // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     UserModel userModel = new UserModel();
-                                    userModel.databaseId = task.getResult().getUser().getProviderId();
+                                    userModel.databaseId = task.getResult().getUser().getUid();
                                     userModel.direction = direction;
                                     userModel.name = nombre;
                                     userModel.email = mail;
                                     try {
-                                        userModel.birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(input_date.getText().toString());
+                                        userModel.birthDate = new SimpleDateFormat("dd / MM / yyyy").parse(input_date.getText().toString());
                                     } catch (ParseException ignored) {}
                                     userModel.save();
                                     Toast.makeText(getApplication(), "Usuari creat correctament!", Toast.LENGTH_SHORT).show();
