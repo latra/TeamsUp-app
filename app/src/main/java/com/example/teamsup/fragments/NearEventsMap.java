@@ -2,10 +2,13 @@ package com.example.teamsup.fragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -113,6 +116,11 @@ public class NearEventsMap extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
+        if (ContextCompat.checkSelfPermission(
+                getContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+            googleMap.setMyLocationEnabled(true);
+        }
         if (nearEvents != null) {
             updateEvents();
         }
@@ -123,8 +131,6 @@ public class NearEventsMap extends Fragment implements OnMapReadyCallback {
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                     new LatLng(lastUserLocation.getLatitude(), lastUserLocation.getLongitude()),
                     10f));
-
-            googleMap.setMyLocationEnabled(true);
 
             googleMap.addCircle(new CircleOptions()
                     .center(new LatLng(lastUserLocation.getLatitude(), lastUserLocation.getLongitude()))
