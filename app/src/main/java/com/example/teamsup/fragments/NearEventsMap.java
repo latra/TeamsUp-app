@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.LayoutInflater;
@@ -38,12 +40,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NearEventsMap extends Fragment implements OnMapReadyCallback {
+    public static final String MyPREFERENCES = "MyPrefs";
+
     List<EventBOModel> nearEvents;
     GoogleMap googleMap;
+    SharedPreferences sharedpreferences;
 
     public NearEventsMap() {};
     public void loadNearEvents(GeoPoint userLocation) {
-        final double radiusInM = 400 * 1000;
+        final double radiusInM = sharedpreferences.getInt(ConstantsUtils.KEY_RADAR, ConstantsUtils.DEFAULT_RADAR) * 1000;
 // depending on overlap, but in most cases there are 4.
         GeoLocation geoLocation = new GeoLocation( userLocation.getLatitude(), userLocation.getLongitude());
         List<GeoQueryBounds> bounds = GeoFireUtils.getGeoHashQueryBounds(geoLocation, radiusInM);
@@ -83,6 +88,8 @@ public class NearEventsMap extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();
         getActivity().getSupportFragmentManager()
                 .beginTransaction()

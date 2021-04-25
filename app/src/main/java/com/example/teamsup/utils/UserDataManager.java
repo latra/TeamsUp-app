@@ -15,6 +15,7 @@ import java.util.Set;
 public class UserDataManager {
     public static final String MyPREFERENCES = "MyPrefs";
     SharedPreferences sharedPreferences;
+
     public UserDataManager(Activity activity) {
         sharedPreferences = activity.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
@@ -35,6 +36,7 @@ public class UserDataManager {
             editor.commit();
         }
     }
+
     public ArrayList<Integer> getTypePreferences() {
         Set<String> hashSet = sharedPreferences.getStringSet(ConstantsUtils.KEY_SPORT, new HashSet<>());
         ArrayList<Integer> arrayList = new ArrayList<>();
@@ -43,4 +45,5 @@ public class UserDataManager {
         }
         return arrayList;
     }
+
 }

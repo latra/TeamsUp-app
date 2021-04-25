@@ -12,13 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.teamsup.R;
 import com.example.teamsup.activities.EditProfileActivity;
 import com.example.teamsup.activities.LoginActivity;
 import com.example.teamsup.activities.TemplateActivity;
 import com.example.teamsup.utils.ConstantsUtils;
+import com.example.teamsup.utils.UserDataManager;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Collections;
@@ -38,13 +41,37 @@ public class UserInfo extends Fragment {
     TextView mail;
     Button logoutButton;
     SharedPreferences sharedpreferences;
-
+    TextView distanceUserRadar;
+    SeekBar distanceUserBar;
     Button misEventos;
 
     public void setValues() {
         direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
         usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
         mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
+        distanceUserRadar.setText(String.format("%s KM", sharedpreferences.getInt(ConstantsUtils.KEY_RADAR, ConstantsUtils.DEFAULT_RADAR)));
+        distanceUserBar.setProgress(sharedpreferences.getInt(ConstantsUtils.KEY_RADAR, ConstantsUtils.DEFAULT_RADAR));
+        distanceUserBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // TODO Auto-generated method stub
+
+                distanceUserRadar.setText(String.format("%s KM", String.valueOf(progress)));
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putInt(ConstantsUtils.KEY_RADAR, seekBar.getProgress());
+                editor.commit();
+            }
+        });
         deletePreferences();
         setPreferences();
     }
@@ -55,6 +82,8 @@ public class UserInfo extends Fragment {
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         editbutton = view.findViewById(R.id.edit_button);
+        distanceUserRadar = view.findViewById(R.id.user_radar_distance);
+        distanceUserBar = view.findViewById(R.id.user_radar_bar);
         direccion = view.findViewById(R.id.direccionUser);
         usuario = view.findViewById(R.id.nombreUsuario);
         mail = view.findViewById(R.id.mailUser);
