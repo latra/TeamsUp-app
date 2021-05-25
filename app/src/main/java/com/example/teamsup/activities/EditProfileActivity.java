@@ -49,6 +49,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
     SharedPreferences sharedpreferences;
 
+    ImageView profile_photo;
+    Uri uri;
+
     CheckBox checkbox_rugby;
     CheckBox checkbox_badminton;
     CheckBox checkbox_baseball;
@@ -71,11 +74,15 @@ public class EditProfileActivity extends AppCompatActivity {
         direccion = findViewById(R.id.edit_direction);
         mail = findViewById(R.id.edit_mail);
 
+        profile_photo = findViewById(R.id.photo_profile);
+
         btnGuardar = findViewById(R.id.btnGuardar);
         btnCambiarFoto = findViewById(R.id.cambiarFoto);
+
         usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
         direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
         mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
+
 
         initializeCheckBox();
         UserDataManager dataManager = new UserDataManager(this);
@@ -99,6 +106,11 @@ public class EditProfileActivity extends AppCompatActivity {
                 if(checkbox_pingpong.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_PINGPONG);
                 if(checkbox_volleyball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_VOLEY);
                 if(checkbox_other.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_OTHER);
+
+                userModel.imgProfile = profile_photo;
+                userModel.imgStorageUri = uri;
+
+
                 FirebaseUtils.getUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -142,7 +154,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
                 ImageView img = findViewById(R.id.photo_profile);
-                Uri uri = data.getData();
+                uri = data.getData();
                 try {
                     InputStream str = getContentResolver().openInputStream(uri);
                     Bitmap bit = BitmapFactory.decodeStream(str);

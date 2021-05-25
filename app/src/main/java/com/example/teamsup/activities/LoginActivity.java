@@ -40,8 +40,6 @@ public class LoginActivity extends AppCompatActivity {
 
     CheckBox remember;
 
-    SharedPreferences sharedpreferences;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

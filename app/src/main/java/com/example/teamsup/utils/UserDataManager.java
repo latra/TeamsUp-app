@@ -33,6 +33,7 @@ public class UserDataManager {
             editor.putString(ConstantsUtils.KEY_EMAIL, model.email);
             editor.putString(ConstantsUtils.KEY_USERNAME, model.username);
             editor.putStringSet(ConstantsUtils.KEY_SPORT, deportes);
+            editor.putString(ConstantsUtils.KEY_IMG_PROFILE, String.valueOf(model.imgStorageUri));
             editor.commit();
         }
     }

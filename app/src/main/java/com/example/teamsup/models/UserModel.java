@@ -1,5 +1,8 @@
 package com.example.teamsup.models;
 
+import android.net.Uri;
+import android.widget.ImageView;
+
 import com.example.teamsup.utils.FirebaseUtils;
 
 import java.util.ArrayList;
@@ -13,6 +16,9 @@ public class UserModel {
     public Date birthDate;
     public ArrayList<Integer> eventTypesPreferences;
     public String direction;
+    public ImageView imgProfile;
+    public Uri imgStorageUri;
+
     public UserModel(){
         new UserModel("", "", "", "", new Date(), new ArrayList<Integer>(), "");
     }

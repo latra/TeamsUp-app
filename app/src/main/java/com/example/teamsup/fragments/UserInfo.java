@@ -7,7 +7,11 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +29,7 @@ import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.utils.UserDataManager;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.Set;
 
@@ -45,11 +50,13 @@ public class UserInfo extends Fragment {
     TextView distanceUserRadar;
     SeekBar distanceUserBar;
     Button misEventos;
+    ImageView profilePhoto;
 
     public void setValues() {
         direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
         usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
         mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
+        profilePhoto.setImageURI(Uri.parse(sharedpreferences.getString(ConstantsUtils.KEY_IMG_PROFILE, "")));
         distanceUserRadar.setText(String.format("%s KM", sharedpreferences.getInt(ConstantsUtils.KEY_RADAR, ConstantsUtils.DEFAULT_RADAR)));
         distanceUserBar.setProgress(sharedpreferences.getInt(ConstantsUtils.KEY_RADAR, ConstantsUtils.DEFAULT_RADAR));
         distanceUserBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -87,6 +94,7 @@ public class UserInfo extends Fragment {
         distanceUserBar = view.findViewById(R.id.user_radar_bar);
         direccion = view.findViewById(R.id.direccionUser);
         usuario = view.findViewById(R.id.nombreUsuario);
+        profilePhoto = view.findViewById(R.id.photo_profile);
         mail = view.findViewById(R.id.mailUser);
         misEventos = view.findViewById(R.id.button);
         logoutButton = view.findViewById(R.id.logout_button);
@@ -101,17 +109,12 @@ public class UserInfo extends Fragment {
             Intent i = new Intent(getActivity(), LoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
-
         }));
 
         setValues();
 
         editbutton.setOnClickListener((v) -> {
             Intent i = new Intent(getActivity(), EditProfileActivity.class);
-            // Lo comento porque no veo que sentido tiene hacerlo aquí :/
-            //                i.putExtra("usuario", (String) usuario.getText());
-            //                i.putExtra("direccion", (String) direccion.getText());
-            //                i.putExtra("mail", (String) mail.getText());
             startActivityForResult(i, 2);
         });
         Button createEvent = view.findViewById(R.id.crear_evento);
@@ -130,7 +133,6 @@ public class UserInfo extends Fragment {
             deletePreferences();
             setPreferences();
         }
-
     }
 
     @Override
@@ -162,12 +164,7 @@ public class UserInfo extends Fragment {
         im10.setImageResource(android.R.color.transparent);
         ImageView im11 = getView().findViewById(R.id.ImagePref11);
         im11.setImageResource(android.R.color.transparent);
-/*        int id_img;
-        for (int i=0; i<11; i++){
-            id_img = getResources().getIdentifier("ImagePref" + i, "id", getPackageName());
-            ImageView img = findViewById(id_img);
-            img.setImageResource(android.R.color.transparent);
-        }*/
+
     }
 
     private void setPreferences() {

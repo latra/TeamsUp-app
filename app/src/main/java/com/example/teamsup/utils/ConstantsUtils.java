@@ -21,6 +21,7 @@ public class ConstantsUtils {
     public static final String KEY_DIRECTION = "direction";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_RADAR = "radar";
+    public static final String KEY_IMG_PROFILE = "imgProfile";
 
 
     public static int recoverEventType(int eventPosition) {
