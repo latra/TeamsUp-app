@@ -8,7 +8,31 @@
     tools:context=".fragments.Calendar"
     tools:deviceIds="wear">
 
-   <CalendarView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+      <sun.bob.mcalendarview.MCalendarView
+          android:layout_width="match_parent"
+          android:layout_height="450dp"
+          tools:context=".fragments.Calendar"
+          android:id="@+id/calendar"/>
+   </LinearLayout>
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+      <androidx.core.widget.NestedScrollView
+          android:layout_width="match_parent"
+          android:layout_height="304dp"
+          android:fillViewport="true">
+
+         <ListView
+             android:id="@+id/event_list"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+         </ListView>
+      </androidx.core.widget.NestedScrollView>
+   </LinearLayout>
+
 </androidx.wear.widget.BoxInsetLayout>
