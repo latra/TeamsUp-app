@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.teamsup.BuildConfig;
@@ -84,9 +85,12 @@ public class TemplateActivity extends AppCompatActivity {
     }
     public void updateFragment(Fragment fragment) {
         activeFragment = fragment;
+        FragmentManager fm = getSupportFragmentManager();
+        fm.popBackStack();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_place, fragment);
         ft.addToBackStack("back");
+
         ft.commit();
     }
     public void ShowGrantPermissionsInfo() {

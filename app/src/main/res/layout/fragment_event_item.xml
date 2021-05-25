@@ -22,9 +22,11 @@
 
             <ImageView
                 android:id="@+id/image_sportico"
-                android:layout_width="77dp"
-                android:layout_height="74dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:src="@drawable/sportico_other"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +39,7 @@
                 android:text="SportType"
                 android:textColor="#3C887E"
                 android:textSize="24sp"
+                android:layout_marginStart="5dp"
                 app:layout_constraintStart_toEndOf="@+id/image_sportico"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,6 +47,7 @@
                 android:id="@+id/event_title"
                 android:layout_width="148dp"
                 android:layout_height="73dp"
+                android:layout_marginStart="5dp"
                 android:text="EventTitle"
                 android:textColor="#373F47"
                 android:textSize="16sp"

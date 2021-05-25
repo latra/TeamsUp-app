@@ -2,6 +2,7 @@ package com.example.teamsup.fragments;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -91,8 +92,12 @@ public class UserInfo extends Fragment {
         logoutButton = view.findViewById(R.id.logout_button);
         logoutButton.setOnClickListener((v -> {
             FirebaseAuth.getInstance().signOut();
+            FragmentManager fm = getActivity().getSupportFragmentManager();
+            fm.popBackStack();
             Intent i = new Intent(getActivity(), LoginActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
+
         }));
 
         setValues();
