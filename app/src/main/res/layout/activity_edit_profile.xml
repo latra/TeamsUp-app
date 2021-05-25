@@ -25,11 +25,25 @@
             android:orientation="horizontal"
             android:background="#3C887E">
 
-            <ImageView
-                android:id="@+id/photo_profile"
-                android:layout_width="157dp"
-                android:layout_height="161dp"
-                app:srcCompat="@drawable/profile" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/photo_profile"
+                    android:layout_width="157dp"
+                    android:layout_height="161dp"
+                    app:srcCompat="@drawable/profile" />
+                <Button
+                    android:id="@+id/cambiarFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cambiarFoto"
+                    android:layout_marginStart="10sp"
+                    android:backgroundTint="#3C889F"
+                    android:textColor="#FDFCFC" />
+            </LinearLayout>
+
 
             <EditText
                 android:id="@+id/usuario_edit"

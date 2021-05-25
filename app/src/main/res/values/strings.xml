@@ -79,6 +79,7 @@
     <string name="tematicaEvento">Temática</string>
     <string name="aplicar">Solicitar plaza</string>
     <string name="title_activity_calendar">Calendar</string>
+    <string name="cambiarFoto">Cambiar foto</string>
 
 
 </resources>

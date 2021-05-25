@@ -5,12 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.service.autofill.UserData;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.teamsup.R;
 import com.example.teamsup.models.UserModel;
@@ -21,6 +30,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,6 +45,7 @@ public class EditProfileActivity extends AppCompatActivity {
     EditText mail;
 
     Button btnGuardar;
+    Button btnCambiarFoto;
 
     SharedPreferences sharedpreferences;
 
@@ -60,7 +72,7 @@ public class EditProfileActivity extends AppCompatActivity {
         mail = findViewById(R.id.edit_mail);
 
         btnGuardar = findViewById(R.id.btnGuardar);
-
+        btnCambiarFoto = findViewById(R.id.cambiarFoto);
         usuario.setText(sharedpreferences.getString(ConstantsUtils.KEY_USERNAME, ""));
         direccion.setText(sharedpreferences.getString(ConstantsUtils.KEY_DIRECTION, ""));
         mail.setText(sharedpreferences.getString(ConstantsUtils.KEY_EMAIL, ""));
@@ -101,6 +113,14 @@ public class EditProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnCambiarFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(in, 0);
+            }
+        });
     }
 
     private void initializeCheckBox() {
@@ -117,5 +137,21 @@ public class EditProfileActivity extends AppCompatActivity {
         checkbox_other = findViewById(R.id.checkbox_other);
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                ImageView img = findViewById(R.id.photo_profile);
+                Uri uri = data.getData();
+                try {
+                    InputStream str = getContentResolver().openInputStream(uri);
+                    Bitmap bit = BitmapFactory.decodeStream(str);
+                    img.setImageBitmap(bit);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
 
+        }
+    }
 }
