@@ -93,7 +93,11 @@ public class UserInfo extends Fragment {
         logoutButton.setOnClickListener((v -> {
             FirebaseAuth.getInstance().signOut();
             FragmentManager fm = getActivity().getSupportFragmentManager();
-            fm.popBackStack();
+
+            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
+
             Intent i = new Intent(getActivity(), LoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
