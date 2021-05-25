@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -19,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.teamsup.BuildConfig;
 import com.example.teamsup.R;
+import com.example.teamsup.fragments.Calendar;
 import com.example.teamsup.fragments.Home;
 import com.example.teamsup.fragments.NearEventsMap;
 import com.example.teamsup.fragments.UserInfo;
@@ -38,9 +40,12 @@ public class TemplateActivity extends AppCompatActivity {
         ImageView userIcon = findViewById(R.id.UserIco);
         ImageView mapIcon = findViewById(R.id.mapIcon);
         ImageView homeIcon = findViewById(R.id.HomeIco);
+        ImageView calendarIcon = findViewById(R.id.calendaryIco);
+
         userIcon.setOnClickListener((view) -> updateFragment(new UserInfo()));
         homeIcon.setOnClickListener((view) -> updateFragment(new Home()));
         mapIcon.setOnClickListener((view) -> updateFragment(new NearEventsMap()));
+        calendarIcon.setOnClickListener((view) -> updateFragment(new Calendar()));
 
 
         new Thread(() -> getUserCoordinates()).run();
