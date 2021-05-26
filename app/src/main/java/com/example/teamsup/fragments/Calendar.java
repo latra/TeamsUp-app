@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,7 +43,10 @@ public class Calendar extends Fragment {
     ArrayList<EventBOModel> events;
     ListView eventsList;
     HashMap<String, String> eventID;
-    private EventListAdapter eventadapter;
+
+    TextView event_type;
+    TextView date_event;
+    TextView eventDescription;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -52,7 +56,15 @@ public class Calendar extends Fragment {
         calendar = (MCalendarView) view.findViewById(R.id.calendar);
 
         eventID = new HashMap<>();
-        eventsList = getView().findViewById(R.id.event_list);
+        event_type = view.findViewById(R.id.event_type);
+        date_event = view.findViewById(R.id.date_event);
+        eventDescription = view.findViewById(R.id.eventDescription);
+
+        event_type.setVisibility(view.INVISIBLE);
+        date_event.setVisibility(view.INVISIBLE);
+        eventDescription.setVisibility(view.INVISIBLE);
+
+
 
         calendar.setOnDateClickListener(new OnDateClickListener() {
             @Override
@@ -64,15 +76,24 @@ public class Calendar extends Fragment {
                     FirebaseUtils.getEvent(id).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
-                           // String EventModelId = documentSnapshot.toObject(EventModel.class).databaseId;
                             EventBOModel event = new EventBOModel();
-                          //  event.eventModel = documentSnapshot.toObject(EventModel.class);
-                            events.add(event);
+                            event.eventModel = documentSnapshot.toObject(EventModel.class);
+                            event_type.setText(event.eventModel.title);
+                            event_type.setVisibility(view.VISIBLE);
+                            date_event.setText(dateString);
+                            date_event.setVisibility(view.VISIBLE);
+                            eventDescription.setText(event.eventModel.description);
+                            eventDescription.setVisibility(view.VISIBLE);
+                           // events.add(event);
 
-                            eventadapter = new EventListAdapter(view.getContext(), events);
+                            //eventadapter = new EventListAdapter(view.getContext(), events);
                             //eventsList.setAdapter(eventadapter);
                         }
                     });
+                }else{
+                    event_type.setVisibility(view.INVISIBLE);
+                    date_event.setVisibility(view.INVISIBLE);
+                    eventDescription.setVisibility(view.INVISIBLE);
                 }
 
             }
