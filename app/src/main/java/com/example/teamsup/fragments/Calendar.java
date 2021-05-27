@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import com.example.teamsup.adapters.EventListAdapter;
 import com.example.teamsup.models.EventBOModel;
 import com.example.teamsup.models.EventModel;
 import com.example.teamsup.models.UserModel;
+import com.example.teamsup.utils.ConstantsUtils;
 import com.example.teamsup.utils.FirebaseUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,12 +43,12 @@ public class Calendar extends Fragment {
 
     MCalendarView calendar;
     ArrayList<EventBOModel> events;
-    ListView eventsList;
     HashMap<String, String> eventID;
 
     TextView event_type;
     TextView date_event;
-    TextView eventDescription;
+    TextView eventAddress;
+    ImageView eventImg;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -58,12 +60,13 @@ public class Calendar extends Fragment {
         eventID = new HashMap<>();
         event_type = view.findViewById(R.id.event_type);
         date_event = view.findViewById(R.id.date_event);
-        eventDescription = view.findViewById(R.id.eventDescription);
+        eventAddress = view.findViewById(R.id.eventAddress);
+        eventImg = view.findViewById(R.id.image_sportico);
 
         event_type.setVisibility(view.INVISIBLE);
         date_event.setVisibility(view.INVISIBLE);
-        eventDescription.setVisibility(view.INVISIBLE);
-
+        eventAddress.setVisibility(view.INVISIBLE);
+        eventImg.setVisibility(view.INVISIBLE);
 
 
         calendar.setOnDateClickListener(new OnDateClickListener() {
@@ -78,22 +81,22 @@ public class Calendar extends Fragment {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             EventBOModel event = new EventBOModel();
                             event.eventModel = documentSnapshot.toObject(EventModel.class);
+
                             event_type.setText(event.eventModel.title);
                             event_type.setVisibility(view.VISIBLE);
                             date_event.setText(dateString);
                             date_event.setVisibility(view.VISIBLE);
-                            eventDescription.setText(event.eventModel.description);
-                            eventDescription.setVisibility(view.VISIBLE);
-                           // events.add(event);
-
-                            //eventadapter = new EventListAdapter(view.getContext(), events);
-                            //eventsList.setAdapter(eventadapter);
+                            eventAddress.setText(event.eventModel.direction);
+                            eventAddress.setVisibility(view.VISIBLE);
+                            eventImg.setImageResource(ConstantsUtils.recoverEventImage(event.eventModel.sport_type));
+                            eventImg.setVisibility(view.VISIBLE);
                         }
                     });
                 }else{
                     event_type.setVisibility(view.INVISIBLE);
                     date_event.setVisibility(view.INVISIBLE);
-                    eventDescription.setVisibility(view.INVISIBLE);
+                    eventAddress.setVisibility(view.INVISIBLE);
+                    eventImg.setVisibility(view.INVISIBLE);
                 }
 
             }
