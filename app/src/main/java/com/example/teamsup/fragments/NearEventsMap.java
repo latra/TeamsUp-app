@@ -45,7 +45,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NearEventsMap extends Fragment implements OnMapReadyCallback {
+public class  NearEventsMap extends Fragment implements OnMapReadyCallback {
     public static final String MyPREFERENCES = "MyPrefs";
 
     List<EventBOModel> nearEvents;

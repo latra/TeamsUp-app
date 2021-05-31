@@ -91,39 +91,41 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 UserModel userModel = new UserModel();
-                userModel.email = mail.getText().toString();
-                userModel.direction = direccion.getText().toString();
-                userModel.username = direccion.getText().toString();
-                userModel.eventTypesPreferences = new ArrayList<>();
-                if(checkbox_rugby.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_FOOTBALL);
-                if(checkbox_badminton.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BADMINTON);
-                if(checkbox_baseball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BASEBALL);
-                if(checkbox_basketball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BASKET);
-                if(checkbox_bowling.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BOWLING);
-                if(checkbox_boxing.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BOXING);
-                if(checkbox_football.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_FOOTBALL);
-                if(checkbox_hockey.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_HOCKEY);
-                if(checkbox_pingpong.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_PINGPONG);
-                if(checkbox_volleyball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_VOLEY);
-                if(checkbox_other.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_OTHER);
+                if(!emptyFields()){
+                    userModel.email = mail.getText().toString();
+                    userModel.direction = direccion.getText().toString();
+                    userModel.username = usuario.getText().toString();
+                    userModel.eventTypesPreferences = new ArrayList<>();
+                 //   userModel.imgStorageUri = uri;
+                    if(checkbox_rugby.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_FOOTBALL);
+                    if(checkbox_badminton.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BADMINTON);
+                    if(checkbox_baseball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BASEBALL);
+                    if(checkbox_basketball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BASKET);
+                    if(checkbox_bowling.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BOWLING);
+                    if(checkbox_boxing.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_BOXING);
+                    if(checkbox_football.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_FOOTBALL);
+                    if(checkbox_hockey.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_HOCKEY);
+                    if(checkbox_pingpong.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_PINGPONG);
+                    if(checkbox_volleyball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_VOLEY);
+                    if(checkbox_other.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_OTHER);
 
-                userModel.imgProfile = profile_photo;
-                userModel.imgStorageUri = uri;
-
-
-                FirebaseUtils.getUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        String userModelId = documentSnapshot.toObject(UserModel.class).databaseId;
-                        if (userModel != null) {
-                            userModel.databaseId = userModelId;
-                            userModel.save();
+                    FirebaseUtils.getUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            String userModelId = documentSnapshot.toObject(UserModel.class).databaseId;
+                            if (userModel != null) {
+                                userModel.databaseId = userModelId;
+                                userModel.save();
+                            }
                         }
-                    }
-                });
-                dataManager.ReadUserData(userModel);
-                finish();
+                    });
+                    dataManager.ReadUserData(userModel);
+                    finish();
+                }else{
+                    Toast.makeText(getApplication(), "Debes de introducir todos los campos", Toast.LENGTH_SHORT).show();
+                }
             }
+
         });
 
         btnCambiarFoto.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +135,11 @@ public class EditProfileActivity extends AppCompatActivity {
                 startActivityForResult(in, 0);
             }
         });
+    }
+
+    private boolean emptyFields() {
+        return mail.getText().toString().equals("") || direccion.getText().toString().equals("")
+                || usuario.getText().toString().equals("");
     }
 
     private void initializeCheckBox() {

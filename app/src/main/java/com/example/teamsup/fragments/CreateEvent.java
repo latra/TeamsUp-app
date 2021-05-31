@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.teamsup.R;
 import com.example.teamsup.activities.TemplateActivity;
@@ -74,30 +75,40 @@ public class CreateEvent extends Fragment implements View.OnClickListener {
         Button createButton = view.findViewById(R.id.btnRegistrar);
         createButton.setOnClickListener((vw) -> {
             EventModel event = new EventModel();
-            event.title = input_name.getText().toString();
-            try {
-                event.date = new SimpleDateFormat("dd / MM / yyyy hh:mm").parse(input_date.getText().toString() + " " + input_hour.getText().toString());
+            if(!emptyFields()){
+                event.title = input_name.getText().toString();
+                try {
+                    event.date = new SimpleDateFormat("dd / MM / yyyy hh:mm").parse(input_date.getText().toString() + " " + input_hour.getText().toString());
 
-                event.direction = input_direction.getText().toString();
-                event.maxParticipants = Integer.parseInt(input_maxparticipants.getText().toString());
-                event.sport_type = ConstantsUtils.recoverEventType(spinner.getSelectedItemPosition());
-                event.owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                if (calculated_address != null) {
-                    event.direction = calculated_address.getAddressLine(0);
-                    event.coordinates = new GeoPoint(calculated_address.getLatitude(), calculated_address.getLongitude());
-                    event.hash = GeoFireUtils.getGeoHashForLocation(new GeoLocation(calculated_address.getLatitude(), calculated_address.getLongitude()));
+                    event.direction = input_direction.getText().toString();
+                    event.maxParticipants = Integer.parseInt(input_maxparticipants.getText().toString());
+                    event.sport_type = ConstantsUtils.recoverEventType(spinner.getSelectedItemPosition());
+                    event.owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    if (calculated_address != null) {
+                        event.direction = calculated_address.getAddressLine(0);
+                        event.coordinates = new GeoPoint(calculated_address.getLatitude(), calculated_address.getLongitude());
+                        event.hash = GeoFireUtils.getGeoHashForLocation(new GeoLocation(calculated_address.getLatitude(), calculated_address.getLongitude()));
 
+                    }
+                    event.createOrUpdateEvent();
+                    ((TemplateActivity) getActivity()).updateFragment(new Home());
+                } catch (ParseException e) {
+                    event.date = new Date();
                 }
-                event.createOrUpdateEvent();
-                ((TemplateActivity) getActivity()).updateFragment(new Home());
-            } catch (ParseException e) {
-                event.date = new Date();
+            }else{
+                Toast.makeText(view.getContext(), "Debes de introducir todos los campos", Toast.LENGTH_SHORT).show();
             }
+
         });
         MaterialTextView cancelButton = view.findViewById(R.id.tvCancelar);
         cancelButton.setOnClickListener((vw) -> {
             ((TemplateActivity) getActivity()).updateFragment(new Home());
         });
+    }
+
+    private boolean emptyFields() {
+        return input_name.getText().toString().equals("") || input_direction.getText().toString().equals("") || input_maxparticipants.getText().toString().equals("") ||
+                input_date.getText().toString().equals("") || input_hour.getText().toString().equals("");
     }
 
     private void proposeDirections() {

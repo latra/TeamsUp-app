@@ -94,6 +94,17 @@ public class FirebaseUtils {
                 );
     }
 
+    public static void setToken(UserModel user){
+        db.collection("users").document(user.databaseId).
+                set(user)
+                .addOnSuccessListener((a) ->
+                        Log.d("FB UPLOAD", "DocumentSnapshot added with ID: " + user.databaseId)
+                )
+                .addOnFailureListener((e) ->
+                        Log.w("FB UPLOAD", "Error adding document", e)
+                );
+    }
+
     public static Query getNearEvents(GeoQueryBounds b) {
 
             return db.collection("events")

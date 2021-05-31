@@ -1,12 +1,15 @@
 package com.example.teamsup.activities;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -20,6 +23,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.teamsup.BuildConfig;
+import com.example.teamsup.Messaging.MessagingService;
 import com.example.teamsup.R;
 import com.example.teamsup.fragments.Calendar;
 import com.example.teamsup.fragments.Home;
@@ -29,6 +33,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.GeoPoint;
 
 public class TemplateActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
+    private MessagingService messagingService;
+
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
     Fragment activeFragment;
     GeoPoint userGeoPoint;
@@ -49,6 +57,16 @@ public class TemplateActivity extends AppCompatActivity {
         calendarIcon.setOnClickListener((view) -> updateFragment(new Calendar()));
 
 
+        messagingService = new MessagingService();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            String channelId  = getString(R.string.default_notification_channel_id);
+            String channelName = getString(R.string.default_notification_channel_name);
+            NotificationManager notificationManager =
+                    getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(new NotificationChannel(channelId,
+                    channelName, NotificationManager.IMPORTANCE_LOW));
+        }
         new Thread(() -> getUserCoordinates()).run();
 
     }
