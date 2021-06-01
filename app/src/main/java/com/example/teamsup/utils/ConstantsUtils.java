@@ -22,6 +22,7 @@ public class ConstantsUtils {
     public static final String KEY_USERNAME = "username";
     public static final String KEY_RADAR = "radar";
     public static final String KEY_IMG_PROFILE = "imgProfile";
+    public static final int REQUEST_CODE_GOOGLE = 1;
 
 
     public static int recoverEventType(int eventPosition) {
