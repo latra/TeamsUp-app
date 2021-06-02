@@ -16,7 +16,7 @@ public class NetworkReceiver extends BroadcastReceiver {
 
     SharedPreferences sharedPrefs;
     String networkPref;
-    boolean refreshDisplay = true;
+    public boolean refreshDisplay = true;
     
     public NetworkReceiver(SharedPreferences sharedPrefs) {
         this.sharedPrefs = sharedPrefs;
