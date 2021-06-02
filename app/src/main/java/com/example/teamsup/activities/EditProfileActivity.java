@@ -63,6 +63,8 @@ public class EditProfileActivity extends AppCompatActivity {
     CheckBox checkbox_pingpong;
     CheckBox checkbox_volleyball;
     CheckBox checkbox_other;
+
+    CheckBox checkbox_wifi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +111,12 @@ public class EditProfileActivity extends AppCompatActivity {
                     if(checkbox_volleyball.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_VOLEY);
                     if(checkbox_other.isChecked())  userModel.eventTypesPreferences.add(ConstantsUtils.TYPE_OTHER);
 
+                    if(checkbox_wifi.isChecked()){
+                        userModel.NetworkPref = ConstantsUtils.WIFI;
+                    }else{
+                        userModel.NetworkPref = ConstantsUtils.WIFIandDatos;
+                    }
+
                     FirebaseUtils.getUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -154,6 +162,13 @@ public class EditProfileActivity extends AppCompatActivity {
         checkbox_pingpong = findViewById(R.id.checkbox_pingpong);
         checkbox_volleyball = findViewById(R.id.checkbox_volleyball);
         checkbox_other = findViewById(R.id.checkbox_other);
+        checkbox_wifi = findViewById(R.id.wifi);
+
+        String networkPrefs = sharedpreferences.getString(ConstantsUtils.KEY_NETWORK_PREFS, "Wi-Fi");
+        if(networkPrefs.equals(ConstantsUtils.WIFI)){
+            checkbox_wifi.setEnabled(true);
+        }
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -19,11 +19,12 @@ public class UserModel {
     public ImageView imgProfile;
     public Uri imgStorageUri;
     public String token;
+    public String NetworkPref;
 
     public UserModel(){
-        new UserModel("", "", "", "", new Date(), new ArrayList<Integer>(), "", Uri.parse(""));
+        new UserModel("", "", "", "", new Date(), new ArrayList<Integer>(), "", Uri.parse(""), "");
     }
-    public UserModel(String databaseId, String email, String username, String name, Date birthDate, ArrayList<Integer> eventTypesPreferences, String direction, Uri imgStorageUri){
+    public UserModel(String databaseId, String email, String username, String name, Date birthDate, ArrayList<Integer> eventTypesPreferences, String direction, Uri imgStorageUri, String NetworkPref){
         this.databaseId = databaseId;
         this.email = email;
         this.username = username;
@@ -32,6 +33,7 @@ public class UserModel {
         this.eventTypesPreferences = eventTypesPreferences;
         this.direction = direction;
         this.imgStorageUri = imgStorageUri;
+        this.NetworkPref = NetworkPref;
     }
 
     public void save() {

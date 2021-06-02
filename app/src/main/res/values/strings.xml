@@ -89,6 +89,10 @@
     <string name="msg_subscribed">Subscribed to teamsup topic</string>
     <string name="msg_subscribe_failed">Failed to subscribe to teamsup topic</string>
     <string name="couldNotLoginWithGoogle">Error on google login</string>
+    <string name="wifi">Utilizar solo Wi-fi</string>
+    <string name="lost_connection">No estas conectado a internet</string>
+    <string name="wifi_connected">Conexión wi-fi.</string>
+    <string name="any_connected">Utilizando wifi o datos</string>
 
 
 </resources>
