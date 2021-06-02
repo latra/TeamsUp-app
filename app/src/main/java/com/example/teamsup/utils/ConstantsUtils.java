@@ -23,7 +23,8 @@ public class ConstantsUtils {
     public static final String KEY_RADAR = "radar";
     public static final String KEY_IMG_PROFILE = "imgProfile";
     public static final int REQUEST_CODE_GOOGLE = 1;
-    public static final String WIFI = "wifi";
+    public static final String KEY_NETWORK_PREFS = "NetworkPrefs";
+    public static final String WIFI = "Wi-Fi";
     public static final String WIFIandDatos = "WIFIandDatos";
 
 

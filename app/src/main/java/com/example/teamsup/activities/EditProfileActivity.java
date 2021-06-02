@@ -162,8 +162,13 @@ public class EditProfileActivity extends AppCompatActivity {
         checkbox_pingpong = findViewById(R.id.checkbox_pingpong);
         checkbox_volleyball = findViewById(R.id.checkbox_volleyball);
         checkbox_other = findViewById(R.id.checkbox_other);
-
         checkbox_wifi = findViewById(R.id.wifi);
+
+        String networkPrefs = sharedpreferences.getString(ConstantsUtils.KEY_NETWORK_PREFS, "Wi-Fi");
+        if(networkPrefs.equals(ConstantsUtils.WIFI)){
+            checkbox_wifi.setEnabled(true);
+        }
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

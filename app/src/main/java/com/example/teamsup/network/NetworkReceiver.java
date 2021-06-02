@@ -38,11 +38,13 @@ public class NetworkReceiver extends BroadcastReceiver {
             if (actNw == null) {
                 refreshDisplay = true;
                 Toast.makeText(context, R.string.lost_connection, Toast.LENGTH_SHORT).show();
-            } else if (ConstantsUtils.WIFI.equals(networkPref) && (actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET))) {
+            } else if (ConstantsUtils.WIFI.equals(networkPref) && actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
                 refreshDisplay = true;
                 Toast.makeText(context, R.string.wifi_connected, Toast.LENGTH_SHORT).show();
-            } else if (ConstantsUtils.WIFIandDatos.equals(networkPref))
+            } else if (ConstantsUtils.WIFIandDatos.equals(networkPref)) {
                 refreshDisplay = true;
+                Toast.makeText(context, R.string.any_connected, Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

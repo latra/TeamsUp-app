@@ -100,10 +100,13 @@ public class LoginActivity extends AppCompatActivity {
         input_password = findViewById(R.id.input_pswd);
         remember = findViewById(R.id.remember);
 
-        if(wifiConnected || mobileConnected){
-            if (mAuth.getCurrentUser() != null) login();
+        updateConnectedFlags();
 
-            btnEntrar.setOnClickListener((view) -> {
+
+        if (mAuth.getCurrentUser() != null) login();
+
+        btnEntrar.setOnClickListener((view) -> {
+            if(wifiConnected || mobileConnected){
                 String email = input_email.getText().toString();
                 String password = input_password.getText().toString();
                 if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
@@ -118,16 +121,17 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                } else if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), "Debes introducir un Email", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplication(), "Debes introducir una contraseña", Toast.LENGTH_SHORT).show();
+                   } else if (TextUtils.isEmpty(email)) {
+                       Toast.makeText(getApplication(), "Debes introducir un Email", Toast.LENGTH_SHORT).show();
+                   } else if (TextUtils.isEmpty(password)) {
+                      Toast.makeText(getApplication(), "Debes introducir una contraseña", Toast.LENGTH_SHORT).show();
 
-                }
-            });
-        }else{
-            Toast.makeText(getApplication(), "Conectar Wifi o Datos", Toast.LENGTH_SHORT).show();
-        }
+                  }
+               }else{
+                   Toast.makeText(getApplication(), "Conectar Wifi o Datos", Toast.LENGTH_SHORT).show();
+               }
+           });
+
 
     }
 
@@ -136,9 +140,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        updateConnectedFlags();
         if (receiver.refreshDisplay) {
-            //loadPage();
+            updateConnectedFlags();
         }
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();

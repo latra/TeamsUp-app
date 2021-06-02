@@ -92,6 +92,7 @@
     <string name="wifi">Utilizar solo Wi-fi</string>
     <string name="lost_connection">No estas conectado a internet</string>
     <string name="wifi_connected">Conexión wi-fi.</string>
+    <string name="any_connected">Utilizando wifi o datos</string>
 
 
 </resources>
