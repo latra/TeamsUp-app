@@ -23,6 +23,8 @@ public class ConstantsUtils {
     public static final String KEY_RADAR = "radar";
     public static final String KEY_IMG_PROFILE = "imgProfile";
     public static final int REQUEST_CODE_GOOGLE = 1;
+    public static final String WIFI = "wifi";
+    public static final String WIFIandDatos = "WIFIandDatos";
 
 
     public static int recoverEventType(int eventPosition) {
