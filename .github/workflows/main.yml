@@ -28,7 +28,7 @@ jobs:
       uses: underwindfall/create-release-with-debugapk@v2.0.0
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MAPS_API_KEY: ${{ secret.MAPS_API_KEY }}
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
       with:
         tag_name: v1.0.0
         asset_path: app/build/outputs/apk/debug/app-debug.apk
